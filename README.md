@@ -7,3 +7,17 @@ Simple EEPROM programmer based on Arduino and controller over the Terminal
 - Lets you erase the whole memory by overwrtting it with a certain value.
 
 An all of this with through a **Command Line Interface** directly from yout laptop.
+
+
+----
+
+
+## Table of Contents
+* **[How It Works](#how-it-works)**
+
+
+----
+
+
+## How It Works
+
