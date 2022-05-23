@@ -9,7 +9,7 @@ Simple EEPROM programmer, powered by Arduino and controller over the Terminal.
 An all of this with through a **Command Line Interface** directly from yout laptop.
 
 > **Note**
-> Tested on **macOS** Monterey. However, it should be compatible with Linux-based systems with minor/no changes.
+> Software tested on **macOS** Monterey. It might be compatible with Linux-based systems with minor/no changes.
 
 > **Warning**
 > Developped for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
