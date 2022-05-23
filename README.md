@@ -11,6 +11,9 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 > **Note**
 > Tested on **macOS** Monterey. However, it should be compatible with Linux-based systems with minor/no changes.
 
+> **Warning**
+> Originally developped for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
+
 ----
 
 
