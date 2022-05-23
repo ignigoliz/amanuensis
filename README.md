@@ -3,7 +3,7 @@ Simple EEPROM programmer, powered by Arduino and controller over the Terminal.
 
 ### What Amanuensis does...
 - Lets you read individual **addresses** and whole **blocks** of memory.
-- Lets you burn a `.bin` file onto the ROM and to write **individual** values.
+- Allows you to burn a `.bin` file onto the ROM and to write **individual** values.
 - Lets you erase the whole memory by **overwrtting** it with a certain value.
 
 An all of this with through a **Command Line Interface** directly from yout laptop.
