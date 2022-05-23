@@ -1,5 +1,5 @@
 # Amanuensis
-Simple EEPROM programmer powered by Arduino and controller over the Terminal.
+Simple EEPROM programmer, powered by Arduino and controller over the Terminal.
 
 ### What Amanuensis does...
 - Lets you read individual **addresses** and whole **blocks** of memory.
@@ -9,7 +9,7 @@ Simple EEPROM programmer powered by Arduino and controller over the Terminal.
 An all of this with through a **Command Line Interface** directly from yout laptop.
 
 > **Note**
-> This is a note
+> Tested on **macOS** Monterey. However, it should be compatible with Linux-based systems in a straightforward manner.
 
 ----
 
