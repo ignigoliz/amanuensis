@@ -8,8 +8,8 @@ Simple EEPROM programmer powered by Arduino and controller over the Terminal.
 
 An all of this with through a **Command Line Interface** directly from yout laptop.
 
-**Note**
-This is a note
+> **Note**
+> This is a note
 
 ----
 
