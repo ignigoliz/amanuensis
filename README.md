@@ -12,7 +12,7 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 > Tested on **macOS** Monterey. However, it should be compatible with Linux-based systems with minor/no changes.
 
 > **Warning**
-> Originally developped for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
+> Developped for **28c256 EEPROM** which has 32K addresses each storing 8-bit values. Use for other parallel EEPROMs might be possible. Read [Use with other EEPROMs](#use-with-other-eeproms).
 
 ----
 
@@ -23,6 +23,7 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 * **[Setup](#setup)**
   * **[Hardware Setup](#hardware-setup)**
   * **[Software Installation](#installation)**
+  * **[Use with other EEPROMs](#use-with-other-eeproms)**
 
 
 ----
@@ -41,5 +42,8 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 
 
 ## Software Installation
+
+
+## Use With Other EEPROMs
 
 
