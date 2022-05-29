@@ -44,7 +44,7 @@ To see all available options, use:
     nuensis --help
 
 
-- Writing a file:
+#### Writing a file:
 
       nuensis write -f my_file.bin
   
@@ -63,6 +63,12 @@ To see all available options, use:
     file.write(rom)
   ```
   This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. The remaining `0xea` data stored in the file are ignored.
+  
+#### Writing a single value:
+
+    nuensis write -v 0123 ef  # Writes value 0xef to address 0x0123
+    
+    
   
 
 ## Setup
