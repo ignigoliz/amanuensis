@@ -1,8 +1,9 @@
 # Amanuensis
 Simple EEPROM programmer, powered by Arduino and controller over the Terminal.
 
-<img src="./nuensis_small.gif" alt="Showcase GIF" width="900" height="270">
-
+<p align="center">
+ <img src="./nuensis_small.gif" alt="Showcase GIF" width="900" height="300">
+</p>
 
 ### What Amanuensis does...
 - Lets you read individual **addresses** and whole **blocks** of memory.
