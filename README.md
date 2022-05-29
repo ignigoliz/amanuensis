@@ -48,10 +48,7 @@ To see all available options, use:
 
       nuensis write -f my_file.bin
   
-  `nuensis` is able to write files whose contens are **bytearrays**.
-  > **Note**
-  > **No-Operation** instructions (`0xea`) are ignored.
-
+  `my_file.bin` should hold its contents in a **bytearray**.
   Example of use:
   ```python
   rom = bytearray([0xea]*32768)
@@ -62,7 +59,9 @@ To see all available options, use:
   with open("my_file.bin", "wb") as file:
     file.write(rom)
   ```
-  This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. The remaining `0xea` data stored in the file are ignored.
+  This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. 
+  > **Note**
+  > During writting, **No-Operation** instructions (`0xea`) are ignored.
   
 #### Writing a single value:
 
