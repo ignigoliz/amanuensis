@@ -108,7 +108,7 @@ EEPROM | Pin | Arduino
 ## Software Installation
 1. Install Arduino **Amanuensis** library by placing it in the `Arduino/libraries` folder, usually found in `~/Documents
 <p align="center">
- <img src="./arduino_install.gif" alt="Installing Arduino library" width="900" height="300">
+ <img src="./arduino_install.gif" alt="Installing Arduino library" width="960" height="225">
 </p>
 3. Install Python requirements:
        pip install -r requirements.txt
