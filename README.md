@@ -64,12 +64,12 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 > During file writting, values in the bytearray with **No-Operation** instruction (`0xea`) are ignored.
   
   
-#### Writing a single value (`-v`):
+#### Writing a Single Value (`-v`):
 
     nuensis write --value 0123 ef  # Writes value 0xef to address 0x0123
     
     
-#### Overwritting whole memory (`-w`):
+#### Overwritting Whole Memory (`-w`):
 
     nuensis write --whole ea  # Writes value 0xea in all addresses.
     
@@ -77,17 +77,17 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 > This operation may take a while.
 
 
-#### Reading single memory address (`-a`):
+#### Reading Single Memory Address (`-a`):
 
     nuensis read --address 0123  # Reads address 0x0123
   
   
-#### Reading memory range (`-r`):
+#### Reading Memory Range (`-r`):
 
     nuensis read --range 0000 002f  # Reads from address 0x0000 to 0x002f
 
 
-#### Reading whole memory (`-w`):
+#### Reading Whole Memory (`-w`):
 
       nuensis read --whole  # Reads from 0x0000 to 0x7fff
       
@@ -120,7 +120,18 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 4. Run `install.sh`.
 
 
-## Recommended Flow:
+## Recommended Writting Procedure:
+
+1. Erase all memory contents and set them to a known value, like **No-Operation** `0xea`:
+
+    nuensis write --whole ea
+    
+2. Create your own `program.bin` as described in **[Writing a Single Value](#writting-a-single-value)**
+
+    nuensis write --file program.bin
+
+3. Check that the contents are what you wanted them to be:
+
 
 
 ## Use With Other EEPROMs
