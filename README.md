@@ -38,6 +38,12 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 
 
 ## Quick Use Guide
+
+To see all available options, use:
+
+    nuensis --help
+
+
 - Writing a file:
 
       nuensis write -f my_file.bin
