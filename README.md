@@ -61,7 +61,7 @@ with open("my_file.bin", "wb") as file:
 ```
 This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. 
 > **Note**
-> During writting, **No-Operation** instructions (`0xea`) are ignored.
+> During file writting, values in the bytearray with **No-Operation** instruction (`0xea`) are ignored.
   
   
 #### Writing a single value (`-v`):
@@ -73,7 +73,7 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 
     nuensis write --whole ea  # Writes value 0xea in all addresses.
     
-> **Note**
+> **Warning**
 > This operation may take a while.
 
 
@@ -106,6 +106,13 @@ EEPROM | Pin | Arduino
 
 
 ## Software Installation
+1. Install Arduino **Amanuensis** library by placing it in the `Arduino/libraries` folder, usually found in `~/Documents
+<p align="center">
+ <img src="./arduino_install.gif" alt="Installing Arduino library" width="900" height="300">
+</p>
+3. Install Python requirements:
+       pip install -r requirements.txt
+
 
 ## Recommended Flow:
 
