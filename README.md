@@ -38,7 +38,24 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 
 
 ## Quick Use Guide
+- Writing a file:
+  `nuensis write -f my_file.bin`
+  
+  `nuensis` is able to write files whose contens are **bytearrays**.
+  > **Note**
+  > **No-Operation** instructions (`0xea`) are ignored.
 
+  Example of use:
+  ```python
+  rom = bytearray([0xea]*32768)
+  rom[0x0000] = 0xaa
+  rom[0x002b] = 0xbb
+
+  with open("my_file.bin", "wb") as file:
+    file.write(rom)
+  ```
+  This results in data 0xaa stored in address 0x0000 and 0xbb stored in 0x002b. The remaining 0xea data stored in rom bytearray are ignored.
+  
 
 ## Setup
 
