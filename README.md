@@ -1,5 +1,5 @@
 # Amanuensis
-Simple EEPROM programmer, powered by Arduino and controller over the Terminal.
+Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal.
 
 <p align="center">
  <img src="./nuensis_small.gif" alt="Showcase GIF" width="900" height="300">
@@ -39,44 +39,75 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 
 ## Quick Use Guide
 
-To see all available options, use:
+To see all available options:
 
-    nuensis --help
+    nuensis read --help
+    nuensis write --help
 
 
-#### Writing a file:
+#### Writing a file (`-f`):
 
-      nuensis write -f my_file.bin
+      nuensis write --file my_file.bin
   
-  `my_file.bin` should hold its contents in a **bytearray**.
-  Example of use:
-  ```python
-  rom = bytearray([0xea]*32768)
+`my_file.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
+```python
+rom = bytearray([0xea]*32768)
   
-  rom[0x0000] = 0xaa
-  rom[0x002b] = 0xbb
+rom[0x0000] = 0xaa
+rom[0x002b] = 0xbb
 
-  with open("my_file.bin", "wb") as file:
-    file.write(rom)
-  ```
-  This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. 
-  > **Note**
-  > During writting, **No-Operation** instructions (`0xea`) are ignored.
+with open("my_file.bin", "wb") as file:
+  file.write(rom)
+```
+This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. 
+> **Note**
+> During writting, **No-Operation** instructions (`0xea`) are ignored.
   
-#### Writing a single value:
+  
+#### Writing a single value (`-v`):
 
-    nuensis write -v 0123 ef  # Writes value 0xef to address 0x0123
+    nuensis write --value 0123 ef  # Writes value 0xef to address 0x0123
     
     
+#### Overwritting whole memory (`-w`):
+
+    nuensis write --whole ea  # Writes value 0xea in all addresses.
+    
+> **Note**
+> This operation may take a while.
+
+
+#### Reading single memory address (`-a`):
+
+    nuensis read --address 0123  # Reads address 0x0123
   
+  
+#### Reading memory range (`-r`):
+
+    nuensis read --range 0000 002f  # Reads from address 0x0000 to 0x002f
+
+
+#### Reading whole memory (`-w`):
+
+      nuensis read --whole  # Reads from 0x0000 to 0x7fff
+      
+> **Note**
+> EEPROM 28c256 has a 15-bit memory address. Its registers range from 0 (`0x0000`) to 32767 (`0x7fff`).
+
 
 ## Setup
+**Amanuensis** consists
 
 
 ## Hardware Setup
 
+EEPROM | Pin | Arduino
+-------|-----|--------
+
 
 ## Software Installation
+
+## Recommended Flow:
 
 
 ## Use With Other EEPROMs
