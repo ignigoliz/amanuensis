@@ -100,9 +100,13 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 
 
 ## Hardware Setup
+An Arduino Mega drives the EEPROM 28c256 through read and write cycles, as described in the [datasheet](https://eater.net/datasheets/28c256.pdf)
+A custom-built shield maps the Arduino pins to the EEPROM ones as descibed in the following mapping table:
 
 EEPROM | Pin | Arduino
 -------|-----|--------
+
+A different custom mapping can be defined in `./Amanuensis.cpp`.
 
 
 ## Software Installation
