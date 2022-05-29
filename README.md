@@ -1,7 +1,7 @@
 # Amanuensis
 Simple EEPROM programmer, powered by Arduino and controller over the Terminal.
 
-<img src="./nuensis_small.gif" alt="Showcase GIF" width="500" height="600">
+<img src="./nuensis_small.gif" alt="Showcase GIF" width="1200" height="408">
 
 
 ### What Amanuensis does...
