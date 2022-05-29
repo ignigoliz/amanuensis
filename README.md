@@ -55,7 +55,7 @@ An all of this with through a **Command Line Interface** directly from yout lapt
   with open("my_file.bin", "wb") as file:
     file.write(rom)
   ```
-  This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. The remaining `0xea` data stored in rom bytearray are ignored.
+  This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. The remaining `0xea` data stored in the file are ignored.
   
 
 ## Setup
