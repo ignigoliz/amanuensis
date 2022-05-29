@@ -48,6 +48,7 @@ An all of this with through a **Command Line Interface** directly from yout lapt
   Example of use:
   ```python
   rom = bytearray([0xea]*32768)
+  
   rom[0x0000] = 0xaa
   rom[0x002b] = 0xbb
 
