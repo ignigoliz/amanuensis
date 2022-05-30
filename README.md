@@ -49,7 +49,7 @@ To see all available options:
     nuensis write --help
 
 
-#### Writting a file:
+#### Writting a file (`-f`):
 
       nuensis write --file my_file.bin
   
@@ -140,7 +140,7 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 
        nuensis write --whole ea
     
-2. Create your own `program.bin` as described in **[Writting a file](#writting-a-file)**
+2. Create your own `program.bin` as described in **[Writting a file](#writting-a-file-)**
 
        nuensis write --file program.bin
 
