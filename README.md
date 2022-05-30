@@ -69,7 +69,7 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 > During file writting, values in the bytearray with **No-Operation** instruction (`0xea`) are ignored.
   
   
-#### Writing a Single Value (`-v`):
+#### Writting a Single Value (`-v`):
 
     nuensis write --value 0123 ef  # Writes value 0xef to address 0x0123
     
@@ -140,7 +140,7 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 
        nuensis write --whole ea
     
-2. Create your own `program.bin` as described in **[Writing a Single Value](#writting-a-single-value)**
+2. Create your own `program.bin` as described in **[Writting a Single Value](#writting-a-single-value)**
 
        nuensis write --file program.bin
 
