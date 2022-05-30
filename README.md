@@ -138,11 +138,11 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 
 1. Erase all memory contents and set them to a known value, like **No-Operation** `0xea`:
 
-    nuensis write --whole ea
+       nuensis write --whole ea
     
 2. Create your own `program.bin` as described in **[Writing a Single Value](#writting-a-single-value)**
 
-    nuensis write --file program.bin
+       nuensis write --file program.bin
 
 3. Check that the contents are what you wanted them to be:
 
