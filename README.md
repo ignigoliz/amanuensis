@@ -2,7 +2,7 @@
 Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal.
 
 <p align="center">
- <img src="./nuensis_file.gif" alt="Uploading file to EEPROM" width="800" height="266">
+ <img src="./nuensis_file.gif" alt="Uploading file to EEPROM" width="900" height="300">
 </p>
 
 ### What Amanuensis does...
