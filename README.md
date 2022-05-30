@@ -140,7 +140,7 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 
        nuensis write --whole ea
     
-2. Create your own `program.bin` as described in **[Writting a file](#writting-a-file-)**
+2. Create your own `program.bin` as described in **[Writting a file](#writting-a-file)**
 
        nuensis write --file program.bin
 
