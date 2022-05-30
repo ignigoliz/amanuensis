@@ -27,7 +27,7 @@ An all of this with through a **Command Line Interface** directly from yout lapt
   * **[Quick Use Guide](#quick-use-guide)**
 * **[Setup](#setup)**
   * **[Hardware Setup](#hardware-setup)**
-  * **[Software Installation](#installation)**
+  * **[Software Installation](#software-installation)**
   * **[Use with other EEPROMs](#use-with-other-eeproms)**
 
 
@@ -51,6 +51,7 @@ To see all available options:
   
 `my_file.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
 ```python
+#!/usr/bin/python3
 rom = bytearray([0xea]*32768)
   
 rom[0x0000] = 0xaa
@@ -118,7 +119,9 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 
 2. Upload `EEPROMinterface.ino` to your Arduino board.
 3. Install Python requirements:
+
        pip install -r requirements.txt
+       
 4. Run `install.sh`.
 
 
