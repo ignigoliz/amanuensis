@@ -85,7 +85,7 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
   
 #### Reading Memory Range (`-r`):
 
-    nuensis read --range 0000 002f  # Reads from address 0x0000 to 0x002f
+    nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
     
 <p align="center">
  <img src="./nuensis_read2.gif" alt="Showcase GIF" width="900" height="300">
