@@ -49,7 +49,7 @@ To see all available options:
     nuensis write --help
 
 
-#### Writting a file (`-f`):
+#### Writting a file:
 
       nuensis write --file my_file.bin
   
