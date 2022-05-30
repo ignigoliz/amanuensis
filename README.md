@@ -1,9 +1,8 @@
-# Amanuensis
-
 <p align="center">
  <img src="./amanuensis_header2.png" alt="Uploading file to EEPROM" width="900" height="321">
 </p>
 
+# Amanuensis
 Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal.
 
 <p align="center">
