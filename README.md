@@ -119,7 +119,7 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 1. Install Arduino **Amanuensis** library by placing it in the `Arduino/libraries` folder, usually found in `~/Documents`.
 
 <p align="center">
- <img src="./arduino_install.gif" alt="Installing Arduino library" width="700" height="174">
+ <img src="./arduino_install.gif" alt="Installing Arduino library" width="900" height="260">
 </p>
 
 2. Upload `EEPROMinterface.ino` to your Arduino board.
