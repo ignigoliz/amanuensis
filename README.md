@@ -37,7 +37,7 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 ## How It Works
 
 <p align="center">
- <img src="./schema.jpg" alt="Communication schema">
+ <img src="./schema.jpeg" alt="Communication schema">
 </p>
 
 
