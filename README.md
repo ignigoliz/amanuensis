@@ -1,5 +1,5 @@
 <p align="center">
- <img src="./amanuensis_header2.png" alt="Uploading file to EEPROM" width="900" height="321">
+ <img src="./amanuensis_header2.png" alt="Uploading file to EEPROM" width=80%">
 </p>
 
 # Amanuensis
