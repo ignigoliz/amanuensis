@@ -1,12 +1,12 @@
 <p align="center">
- <img src="./amanuensis_header2.png" alt="Uploading file to EEPROM" width=80%">
+ <img src="./amanuensis_header2.png" alt="Uploading file to EEPROM" width=90%>
 </p>
 
 # Amanuensis
 Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal.
 
 <p align="center">
- <img src="./nuensis_file.gif" alt="Uploading file to EEPROM" width="1000" height="333">
+ <img src="./nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
 </p>
 
 ### What Amanuensis does...
@@ -41,7 +41,7 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 ## How It Works
 
 <p align="center">
- <img src="./schema.jpeg" alt="Communication schema">
+ <img src="./schema.jpeg" alt="Communication schema" width=100%>
 </p>
 
 
@@ -96,7 +96,7 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
     nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
     
 <p align="center">
- <img src="./nuensis_read.gif" alt="Showcase GIF" width="900" height="300">
+ <img src="./nuensis_read.gif" alt="Showcase GIF" width=90%>
 </p>
     
 
@@ -127,7 +127,7 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 1. Install Arduino **Amanuensis** library by placing it in the `Arduino/libraries` folder, usually found in `~/Documents`.
 
 <p align="center">
- <img src="./arduino_install.gif" alt="Installing Arduino library" width="900" height="260">
+ <img src="./arduino_install.gif" alt="Installing Arduino library" width=80%>
 </p>
 
 2. Upload `EEPROMinterface.ino` to your Arduino board.
