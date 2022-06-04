@@ -1,6 +1,7 @@
-<p align="center">
+
+<h1 align="center">
  <img src="./amanuensis_header.png" alt="Uploading file to EEPROM" width=100%>
-</p>
+</h1><br>
 
 Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal.
 
