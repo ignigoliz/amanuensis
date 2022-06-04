@@ -1,20 +1,20 @@
 
 <p align="center">
- <img src="./amanuensis_header.png" alt="Uploading file to EEPROM" width=100%>
+ <img src="./amanuensis_header.png" alt="Uploading file to EEPROM" width=80%>
 </p>
 
 ---
 
 Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal.
 
-<p align="center">
- <img src="./nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
-</p>
-
 ### What Amanuensis does...
 - Lets you read individual **addresses** and whole **blocks** of memory.
 - Allows you to burn a `.bin` file onto the ROM and to write **individual** values.
 - Lets you erase the whole memory by **overwrtting** it with a certain value.
+
+<p align="center">
+ <img src="./nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
+</p>
 
 An all of this with through a **Command Line Interface** directly from yout laptop.
 
