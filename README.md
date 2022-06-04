@@ -141,7 +141,7 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 To test the installation, open a new terminal window and type `nuensis -h`.
 
 > **Warning**
-> If you relocate the folder `amanuensis`, you will have to edit `~/.bash_profile` and delete the line containing `source .../nuensis.sh, and rerun `install.sh` from within the new location.
+> If you relocate the folder `amanuensis`, you will have to edit `~/.bash_profile` and delete the line containing `source .../nuensis.sh`, and rerun `install.sh` from within the new location.
 
 
 ## Recommended Writting Procedure:
