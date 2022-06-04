@@ -131,11 +131,17 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 </p>
 
 2. Upload `EEPROMinterface.ino` to your Arduino board.
-3. Install Python requirements:
+3. Clone or download this repo and place it where you want to keep it.
+4. Install Python requirements:
 
        pip install -r requirements.txt
        
-4. Run `install.sh`.
+4. Move to the folder `cd .../amanuensis` and run `install.sh`.
+
+To test the installation, open a new terminal window and type `nuensis -h`.
+
+> **Warning**
+> If you relocate the folder `amanuensis`, you will have to edit `~/.bash_profile` and delete the line containing `source .../nuensis.sh, and rerun `install.sh` from within the new location.
 
 
 ## Recommended Writting Procedure:
