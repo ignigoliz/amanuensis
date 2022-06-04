@@ -120,7 +120,34 @@ An Arduino Mega drives the EEPROM 28c256 through read and write cycles, as descr
 A custom-built shield maps the Arduino pins to the EEPROM ones as descibed in the following mapping table:
 
 EEPROM | Pin | Arduino
--------|-----|--------
+:---:  |:---:|:---:
+Write Enable| WE | 32
+Output Enable| OE | 52
+Chip Enable| CE | 29
+Data 0 | D0 | 49
+Data 1 | D1 | 41
+Data 2 | D2 | 39
+Data 3 | D3 | 35
+Data 4 | D4 | 33
+Data 5 | D5 | 23
+Data 6 | D6 | 25
+Data 7 | D7 | 27
+Address 0 | A0 | 47
+Address 1 | A1 | 45
+Address 2 | A2 | 51
+Address 3 | A3 | 50
+Address 4 | A4 | 44
+Address 5 | A5 | 46
+Address 6 | A6 | 48
+Address 7 | A7 | 40
+Address 8 | A8 | 24
+Address 9 | A9 | 26
+Address 10 | A10 | 53
+Address 11| A11 | 28
+Address 12 | A12 | 38
+Address 13 | A13 | 32
+Address 14 | A14 | 36
+
 
 A different custom mapping can be defined in `./Amanuensis.cpp`.
 
