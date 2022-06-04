@@ -1,6 +1,6 @@
 
 <p align="center">
- <img src="./amanuensis_header.png" alt="Uploading file to EEPROM" width=80%>
+ <img src="./amanuensis_header.png" alt="Uploading file to EEPROM" width=90%>
 </p>
 
 ---
