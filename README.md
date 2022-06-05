@@ -189,4 +189,7 @@ To test the installation, open a new terminal window and type `nuensis -h`.
 
 ## Use With Other EEPROMs
 
+<p align="center">
+ <img src="./nuensis_pulses.png" alt="Pulses for operation modes" width=90%>
+</p>
 
