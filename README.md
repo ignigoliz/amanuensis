@@ -164,7 +164,7 @@ Address 13 | A13 | 32
 Address 14 | A14 | 36
 
 
-A different custom mapping can be defined in `./Amanuensis.cpp`.
+A different mapping might be defined in `./Amanuensis.cpp`.
 
 
 ## Software Installation
