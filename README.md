@@ -116,8 +116,6 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 
 
 ## Setup
-**Amanuensis** consists
-
 
 ## Hardware Setup
 
@@ -194,7 +192,7 @@ To test the installation, open a new terminal window and type `nuensis -h`.
 
 #### Moving the `amanuensis` folder
 The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` folder, which was set when running `install.sh`. Therefore, if the folder is moved around, the CLI commands will fail. To solve it:
-1. Move the `amanuensis` folder.
+1. Move the `amanuensis` folder to the new desired destination.
 2. Open `./bash_profile` and delete the entry `source [your-path]/nuensis.sh`
 3. cd to the new folder location and re-run `./install.sh`.
 
