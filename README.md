@@ -47,7 +47,7 @@ Your laptop's Command Line Interface interacts with Arduino over the serial port
 These read/write pulse cycles can be found the [datasheet](https://eater.net/datasheets/28c256.pdf) of the **28c256 parallel EEPROM**.
 
 <p align="center">
- <img src="./schema.jpg" alt="Communication schema" width=90%>
+ <img src="./schema.jpg" alt="Communication schema" width=100%>
 </p>
 
 
