@@ -59,7 +59,7 @@ To see all available options:
     nuensis write --help
 
 
-#### Writting a file (`-f`):
+#### Writting a File (`-f`):
 
       nuensis write --file my_file.bin
   
@@ -168,24 +168,35 @@ A different custom mapping can be defined in `./Amanuensis.cpp`.
 
 
 ## Software Installation
-1. Install Arduino **Amanuensis** library by placing it in the `Arduino/libraries` folder, usually found in `~/Documents`.
+1. Clone or download this repo and place it in your **path** of preference (e.g. `./Documents`).
+
+> **Warning**
+> Moving the repo folder will break the paths of the binaries. To avoid this, follow the steps in **[Moving the `amanuensis` folder](#moving-the-amanuensis-folder)**.
+
+#### Arduino setup
+2. Install Arduino **Amanuensis** library by placing it in the `Arduino/libraries` folder, usually found in `~/Documents`.
 
 <p align="center">
  <img src="./arduino_install.gif" alt="Installing Arduino library" width=80%>
 </p>
 
-2. Upload `EEPROMinterface.ino` to your Arduino board.
-3. Clone or download this repo and place it where you want to keep it.
+3. Upload `EEPROMinterface.ino` to your Arduino board.
+
+#### Laptop setup
+
 4. Install Python requirements:
 
        pip install -r requirements.txt
        
-4. Move to the folder `cd .../amanuensis` and run `install.sh`.
+5. Move to the amanuensis folder, wherever you placed it,  (`cd [your-path]/amanuensis`) and run `./install.sh`.
 
 To test the installation, open a new terminal window and type `nuensis -h`.
 
-> **Warning**
-> If you relocate the folder `amanuensis`, you will have to edit `~/.bash_profile` and delete the line containing `source .../nuensis.sh`, and rerun `install.sh` from within the new location.
+#### Moving the `amanuensis` folder
+The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` folder, which was set when running `install.sh`. Therefore, if the folder is moved around, the CLI commands will fail. To solve it:
+1. Move the `amanuensis` folder.
+2. Open `./bash_profile` and delete the entry `source [your-path]/nuensis.sh`
+3. cd to the new folder location and re-run `./install.sh`.
 
 
 ## Recommended Writting Procedure:
@@ -194,7 +205,7 @@ To test the installation, open a new terminal window and type `nuensis -h`.
 
        nuensis write --whole ea
     
-2. Create your own `program.bin` as described in **[Writting a file](#writting-a-file)**
+2. Create your own `program.bin` as described in **[Writting a File](#writting-a-file-(f))**
 
        nuensis write --file program.bin
 
@@ -204,7 +215,16 @@ To test the installation, open a new terminal window and type `nuensis -h`.
 
 ## Use With Other EEPROMs
 
+`Amanuensis` should work with other **parallel** EEPROMs as long as they respond to the same read/write pulse cycles as the **28c256** (e.g. 28c64):
+
 <p align="center">
  <img src="./anuensis_pulses.png" alt="Pulses for operation modes" width=100%>
 </p>
+
+However, the code might have to be changed to fit your particular EEPROM needs. This is a quick checklist:
+
+- [ ] Confirm that the working voltage of your EEPROM is correctly set (in my case, Vcc is 5V, provided by Arduino).
+- [ ] Revisit the **pin mapping**, defined in `amanuensis/src/Amanuensis.cpp`.
+- [ ] Set the max address of your EEPROM in ... (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
+
 
