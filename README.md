@@ -44,7 +44,7 @@ An all of this with through a **Command Line Interface** directly from yout lapt
 
 Your laptop's Command Line Interface interacts with Arduino over the serial port. At the same time, the Arduino drives **read/write pulse cycles** onto the parallel EEPROM. It sends back the information to Arduino, which passes it back to your laptop's Command Line Interface.
 
-These read/write pulse cycles can be found the [datasheet](https://eater.net/datasheets/28c256.pdf) of the 28c256 parallel EEPROM
+These read/write pulse cycles can be found the [datasheet](https://eater.net/datasheets/28c256.pdf) of the **28c256 parallel EEPROM**.
 
 <p align="center">
  <img src="./schema.jpeg" alt="Communication schema" width=100%>
