@@ -112,7 +112,7 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
       nuensis read --whole  # Reads from 0x0000 to 0x7fff
       
 > **Note**
-> EEPROM 28c256 has 15-bit memory registers. Its memory addresses range from 0 (`0x0000`) to 32767 (`0x7fff`).
+> EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).
 
 
 ## Setup
