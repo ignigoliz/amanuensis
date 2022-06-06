@@ -117,15 +117,18 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 
 ## Hardware Setup
 
-Composed of 3 elements:
-
 <p align="center">
  <img src="./overall_hardware.png" alt="Hardware components" width=75%>
 </p>
 
 
-An Arduino Mega drives the EEPROM 28c256 through read and write cycles, as described in the [datasheet](https://eater.net/datasheets/28c256.pdf)
-A custom-built shield maps the Arduino pins to the EEPROM ones as descibed in the following mapping table:
+An **Arduino Mega** drives the **EEPROM 28c256** through a custom made **Shield**:
+
+<p align="center">
+ <img src="./shield.png" alt="Hardware components" width=50%>
+</p>
+
+The **Shield** performs the following pin mapping:
 
 EEPROM | Pin | Arduino
 :---:  |:---:|:---:
