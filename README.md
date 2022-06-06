@@ -5,11 +5,11 @@
 
 ---
 
-Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal.
+Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal. Useful for those following [Ben Eater's 6502 pc course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
 
 ### What Amanuensis does...
 - Lets you read individual **addresses** and whole **blocks** of memory.
-- Allows you to burn a `.bin` file onto the ROM and to write **individual** values.
+- Allows you to burn a `.bin` file onto the EEPROM and to write **individual** values to specific addresses.
 - Lets you erase the whole memory by **overwrtting** it with a certain value.
 
 <p align="center">
@@ -76,7 +76,7 @@ with open("my_file.bin", "wb") as file:
 ```
 This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`. 
 > **Note**
-> During file writting, values in the bytearray with **No-Operation** instruction (`0xea`) are ignored.
+> During file writting, values in the bytearray with **No-Operation** instruction (`0xea`) are ignored. In other words, `0xea` must be used as a placeholder.
   
   
 #### Writting a Single Value (`-v`):
