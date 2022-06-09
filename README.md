@@ -57,9 +57,9 @@ To see all available options:
 
 #### Writting a File (`-f`):
 
-      nuensis write --file my_file.bin
+      nuensis write --file program.bin
 
-`my_file.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
+`program.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
 
 ```python
 #!/usr/bin/python3
@@ -68,7 +68,7 @@ rom = bytearray([0xea]*32768)
 rom[0x0000] = 0xaa
 rom[0x002b] = 0xbb
 
-with open("my_file.bin", "wb") as file:
+with open("program.bin", "wb") as file:
   file.write(rom)
 ```
 
