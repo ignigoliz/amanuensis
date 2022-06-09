@@ -86,10 +86,9 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
     nuensis write --whole ea  # Writes value 0xea in all addresses.
 
 > **Warning**
-> This operation may take a while.
-
+> This operation may take a while:
 <p align="center">
- <img src="./assets/nuensis_overwrite.gif" alt="Overwritting whole memory" width=50%>
+ <img src="./assets/nuensis_overwrite.gif" alt="Overwritting whole memory" width=60%>
 </p>
 
 #### Reading Single Memory Address (`-a`):
@@ -181,7 +180,7 @@ A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp
 
 4. Install Python requirements:
 
-   pip install -r requirements.txt
+       pip install -r requirements.txt
 
 5. Move to the amanuensis folder, wherever you placed it, (`cd [your-path]/amanuensis`) and run `./install.sh`.
 
@@ -199,11 +198,11 @@ The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` 
 
 1. Erase all memory contents and set them to a known value, like **No-Operation** `0xea`:
 
-   nuensis write --whole ea
+       nuensis write --whole ea
 
 2. Create your own `program.bin` as described in **[Writting a File](<#writting-a-file-(f)>)**
 
-   nuensis write --file program.bin
+       nuensis write --file program.bin
 
 3. Check that the contents are what you wanted them to be:
 
