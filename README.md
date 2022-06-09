@@ -165,7 +165,7 @@ A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp
 
 #### Arduino setup
 
-2. Install Arduino **Amanuensis library** by placing the `./src/Arduino/AmanuensisLib/` folder in the `Arduino/libraries/` folder, usually found in `~/Documents/`.
+2. Install Arduino **Amanuensis library** by placing the `./src/Arduino/AmanuensisLib/` folder in your system's `Arduino/libraries/` folder, usually found in `~/Documents/`.
 
 <p align="center">
  <img src="./assets/arduino_install.gif" alt="Installing Arduino library" width=80%>
