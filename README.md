@@ -100,9 +100,11 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
  <img src="./assets/nuensis_read.gif" alt="Showcase GIF" width=90%>
 </p>
 
+
 #### Reading Whole Memory (`-w`):
 
       nuensis read --whole  # Reads from 0x0000 to 0x7fff
+
 
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).
@@ -152,18 +154,18 @@ The **Shield** performs the following pin mapping:
 |  Address 13   | A13 |   32    |
 |  Address 14   | A14 |   36    |
 
-A different mapping might be defined in `./Amanuensis.cpp`.
+A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp`.
 
 ## Software Installation
 
-1. Clone or download this repo and place it in your **path** of preference (e.g. `./Documents`).
+1. Clone or download this repo and place it in your **path** of preference (e.g. `./Documents/`).
 
 > **Warning**
 > Moving the repo folder will break the paths of the binaries. To avoid this, follow the steps in **[Moving the `amanuensis` folder](#moving-the-amanuensis-folder)**.
 
 #### Arduino setup
 
-2. Install Arduino **Amanuensis** library by placing it in the `Arduino/libraries` folder, usually found in `~/Documents`.
+2. Install Arduino **Amanuensis library** by placing the `./src/Arduino/AmanuensisLib/` folder in your system's `Arduino/libraries/` folder, usually found in `~/Documents/`.
 
 <p align="center">
  <img src="./assets/arduino_install.gif" alt="Installing Arduino library" width=80%>
@@ -211,6 +213,7 @@ The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` 
 
 However, the code might have to be changed to fit your particular EEPROM needs. This is a quick checklist:
 
-- [ ] Confirm that the working voltage of your EEPROM is correctly set (in my case, Vcc is 5V, provided by Arduino).
+- [ ] Confirm that the working voltage of your EEPROM is correctly set (in this case, Vcc of 5V is provided by Arduino).
 - [ ] Revisit the **pin mapping**, defined in `amanuensis/src/Amanuensis.cpp`.
-- [ ] Set the max address of your EEPROM in ... (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
+- [ ] Set `MAX_ADDRESS` of your EEPROM in `./src/ArduinoInterface.py` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
+- [ ] Set `MAX_ADDRESS` in `./src/EEPROM_interface.ino` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
