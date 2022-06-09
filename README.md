@@ -185,7 +185,7 @@ A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp
 
 5. Move to the amanuensis folder, wherever you placed it, (`cd [your-path]/amanuensis`) and run `./install.sh`.
 
-To test the installation, open a new terminal window and type `nuensis -h`.
+To test the installation, open a **new** terminal window and type `nuensis -h`.
 
 #### Moving the `amanuensis` folder
 
