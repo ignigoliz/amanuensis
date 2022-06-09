@@ -154,18 +154,18 @@ The **Shield** performs the following pin mapping:
 |  Address 13   | A13 |   32    |
 |  Address 14   | A14 |   36    |
 
-A different mapping might be defined in `./Amanuensis.cpp`.
+A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp`.
 
 ## Software Installation
 
-1. Clone or download this repo and place it in your **path** of preference (e.g. `./Documents`).
+1. Clone or download this repo and place it in your **path** of preference (e.g. `./Documents/`).
 
 > **Warning**
 > Moving the repo folder will break the paths of the binaries. To avoid this, follow the steps in **[Moving the `amanuensis` folder](#moving-the-amanuensis-folder)**.
 
 #### Arduino setup
 
-2. Install Arduino **Amanuensis** library by placing it in the `Arduino/libraries` folder, usually found in `~/Documents`.
+2. Install Arduino **Amanuensis library** by placing the `./src/Arduino/AmanuensisLib/` folder in the `Arduino/libraries/` folder, usually found in `~/Documents/`.
 
 <p align="center">
  <img src="./assets/arduino_install.gif" alt="Installing Arduino library" width=80%>
