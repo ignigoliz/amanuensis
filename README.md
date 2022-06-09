@@ -88,6 +88,10 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 > **Warning**
 > This operation may take a while.
 
+<p align="center">
+ <img src="./assets/nuensis_overwrite.gif" alt="Overwritting whole memory" width=50%>
+</p>
+
 #### Reading Single Memory Address (`-a`):
 
     nuensis read --address 0123  # Reads address 0x0123
@@ -97,7 +101,7 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
     nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
 
 <p align="center">
- <img src="./assets/nuensis_read.gif" alt="Showcase GIF" width=90%>
+ <img src="./assets/nuensis_read.gif" alt="Reading range example" width=90%>
 </p>
 
 
@@ -120,7 +124,7 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 An **Arduino Mega** drives the **EEPROM 28c256** through a custom made **Shield**:
 
 <p align="center">
- <img src="./assets/shield.png" alt="Hardware components" width=50%>
+ <img src="./assets/shield.png" alt="Shield description" width=50%>
 </p>
 
 The **Shield** performs the following pin mapping:
@@ -168,7 +172,7 @@ A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp
 2. Install Arduino **Amanuensis library** by placing the `./src/Arduino/AmanuensisLib/` folder in your system's `Arduino/libraries/` folder, usually found in `~/Documents/`.
 
 <p align="center">
- <img src="./assets/arduino_install.gif" alt="Installing Arduino library" width=80%>
+ <img src="./assets/arduino_install.gif" alt="Installing AmanuensisLib (Arduino library)" width=80%>
 </p>
 
 3. Upload `EEPROM_interface.ino` to your Arduino board.
@@ -208,7 +212,7 @@ The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` 
 `Amanuensis` should work with other **parallel** EEPROMs as long as they respond to the same read/write pulse cycles as the **28c256** (e.g. 28c64):
 
 <p align="center">
- <img src="./assets/nuensis_pulses.png" alt="Pulses for operation modes" width=100%>
+ <img src="./assets/nuensis_pulses.png" alt="Pulses for reading/writting operations" width=100%>
 </p>
 
 However, the code might have to be changed to fit your particular EEPROM needs. This is a quick checklist:
