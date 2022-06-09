@@ -31,14 +31,16 @@ All of this with through a **Command Line Interface** directly from yout laptop.
 
 - **[How It Works](#how-it-works)**
   - **[Quick Use Guide](#quick-use-guide)**
+  - **[Extra Information](#extra-information)**
 - **[Setup](#setup)**
   - **[Hardware Setup](#hardware-setup)**
   - **[Software Installation](#software-installation)**
+  - **[Recommended Writting Procedure](#recommended-writting-procedure)**
   - **[Use with other EEPROMs](#use-with-other-eeproms)**
 
 ---
 
-## How It Works
+# How It Works
 
 Your laptop's Command Line Interface interacts with Arduino over the serial port. At the same time, the Arduino drives **read/write pulse cycles** onto the parallel EEPROM. It sends back the information to Arduino, which passes it back to your laptop's Command Line Interface.
 
@@ -112,7 +114,15 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).
 
-## Setup
+
+## Extra Information
+Amanuensis comes with verbose error messages that will early catch any invalid addresses/values:
+<p align="center">
+ <img src="./assets/nuensis_error.png" alt="Example error message" width=75%>
+</p>
+
+
+# Setup
 
 ## Hardware Setup
 
