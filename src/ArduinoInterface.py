@@ -319,10 +319,3 @@ class ArduinoInterface:
                 return valid_value(args.address[1]) and  valid_address(args.address[0])
             if args.whole:
                 return valid_value(args.whole[0])
-            
-
-
-
-
-
- 

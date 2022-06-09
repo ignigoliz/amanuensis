@@ -1,9 +1,11 @@
+
 class DataConverter:
   """ Addresses occupy 2 bytes (e.g. 0xABCD) and values 1 byte (e.g. 0xEF)
       hex_str: "ABCD"
       hex: b'\xde\xad'
       int: 17 (==0x11)
   """
+
 
   def __init__(self):
       pass
@@ -28,8 +30,10 @@ class DataConverter:
         elif type=="value":
             return f'{int:02x}'
   
+
   def _int_to_hex(self, int):
       return self._hex_str_to_hex(self._int_to_hex_str(int))
+
 
   def _hex_to_int(self, hex):
       return self._hex_str_to_int(self._hex_to_hex_str(hex))
