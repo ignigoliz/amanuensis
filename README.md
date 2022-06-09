@@ -57,9 +57,9 @@ To see all available options:
 
 #### Writting a File (`-f`):
 
-      nuensis write --file my_file.bin
+      nuensis write --file program.bin
 
-`my_file.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
+`program.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
 
 ```python
 #!/usr/bin/python3
@@ -68,7 +68,7 @@ rom = bytearray([0xea]*32768)
 rom[0x0000] = 0xaa
 rom[0x002b] = 0xbb
 
-with open("my_file.bin", "wb") as file:
+with open("program.bin", "wb") as file:
   file.write(rom)
 ```
 
@@ -100,11 +100,9 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
  <img src="./assets/nuensis_read.gif" alt="Showcase GIF" width=90%>
 </p>
 
-
 #### Reading Whole Memory (`-w`):
 
       nuensis read --whole  # Reads from 0x0000 to 0x7fff
-
 
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).

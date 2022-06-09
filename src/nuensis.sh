@@ -12,7 +12,7 @@ function nuensis() {
     echo There are spaces in your PATH! You call yourself programmer? Do some good to yourself and remove them!
   else
     #echo "python3 $BASH_SCRIPT_DIR/final_files/EEPROM_interface_class_revisit.py --wd $INVOCATION_DIR $args" 
-    python3 $THIS_BASH_SCRIPT_DIR/final_files/main_amanuensis.py --wd $INVOCATION_DIR $args
+    python3 $THIS_BASH_SCRIPT_DIR/main_amanuensis.py --wd $INVOCATION_DIR $args
   fi
     
 }
