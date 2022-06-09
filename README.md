@@ -57,9 +57,9 @@ To see all available options:
 
 #### Writting a File (`-f`):
 
-      nuensis write --file program.bin
+      nuensis write --file my_file.bin
 
-`program.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
+`my_file.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
 
 ```python
 #!/usr/bin/python3
@@ -68,7 +68,7 @@ rom = bytearray([0xea]*32768)
 rom[0x0000] = 0xaa
 rom[0x002b] = 0xbb
 
-with open("program.bin", "wb") as file:
+with open("my_file.bin", "wb") as file:
   file.write(rom)
 ```
 
@@ -100,9 +100,11 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
  <img src="./assets/nuensis_read.gif" alt="Showcase GIF" width=90%>
 </p>
 
+
 #### Reading Whole Memory (`-w`):
 
       nuensis read --whole  # Reads from 0x0000 to 0x7fff
+
 
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).
@@ -211,6 +213,7 @@ The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` 
 
 However, the code might have to be changed to fit your particular EEPROM needs. This is a quick checklist:
 
-- [ ] Confirm that the working voltage of your EEPROM is correctly set (in my case, Vcc is 5V, provided by Arduino).
+- [ ] Confirm that the working voltage of your EEPROM is correctly set (in this case, Vcc of 5V is provided by Arduino).
 - [ ] Revisit the **pin mapping**, defined in `amanuensis/src/Amanuensis.cpp`.
-- [ ] Set the max address of your EEPROM in ... (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
+- [ ] Set `MAX_ADDRESS` of your EEPROM in `./src/ArduinoInterface.py` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
+- [ ] Set `MAX_ADDRESS` in `./src/EEPROM_interface.ino` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
