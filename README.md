@@ -215,5 +215,4 @@ However, the code might have to be changed to fit your particular EEPROM needs. 
 
 - [ ] Confirm that the working voltage of your EEPROM is correctly set (in this case, Vcc of 5V is provided by Arduino).
 - [ ] Revisit the **pin mapping**, defined in `amanuensis/src/Amanuensis.cpp`.
-- [ ] Set `MAX_ADDRESS` of your EEPROM in `./src/ArduinoInterface.py` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
-- [ ] Set `MAX_ADDRESS` in `./src/EEPROM_interface.ino` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
+- [ ] Set `MAX_ADDRESS` of your EEPROM in `./src/ArduinoInterface.py` and in `./src/EEPROM_interface.ino` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
