@@ -12,6 +12,7 @@ class ArduinoInterface:
     """
 
     port: serial.Serial
+    MAX_ADDR = 32767  # 15 bit address register
 
     def __init__(self):
         self.converter = DataConverter()
@@ -279,6 +280,45 @@ class ArduinoInterface:
                     else:
                         progress = self.converter._hex_to_int(msg)
                         self._print_progress(progress)
+
+    
+    def valid_arguments(self, args):
+        def valid_address(addr_hex_str):
+            try:
+                addr_int = self.converter._hex_str_to_int(addr_hex_str)
+                if addr_int <= self.MAX_ADDR and addr_int >= 0:
+                    return True
+                else:
+                    print("Wrong Address:")
+                    print("Address must be a positive 15-bit long HEX number (smaller than 0x7fff):")
+            except:
+                print("Wrong Address:")
+                return False
+
+        def valid_value(value_hex_str):
+            try:
+                value_int = self.converter._hex_str_to_int(value_hex_str)
+                if value_int <= 255 and value_int >= 0:
+                    return True
+                else:
+                    print("Wrong Value:")
+                    print("Value must be a positive 8-bit HEX number (smaller than 0xff):")
+            except:
+                print("Wrong Value:")
+
+            return False
+            
+        
+        if args.command == "read":
+            if args.address:
+                return valid_address(args.address[0])
+            elif args.range:
+                return valid_address(args.range[0]) and valid_address(args.range[1])
+        elif args.command == "write":
+            if args.address:
+                return valid_value(args.address[1]) and  valid_address(args.address[0])
+            if args.whole:
+                return valid_value(args.whole[0])
             
 
 
