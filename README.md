@@ -171,7 +171,7 @@ A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp
  <img src="./assets/arduino_install.gif" alt="Installing Arduino library" width=80%>
 </p>
 
-3. Upload `EEPROMinterface.ino` to your Arduino board.
+3. Upload `EEPROM_interface.ino` to your Arduino board.
 
 #### Laptop setup
 
