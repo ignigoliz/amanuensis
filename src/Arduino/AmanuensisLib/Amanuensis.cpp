@@ -11,7 +11,6 @@ char Amanuensis::DATA[] = {49, 41, 39, 35, 33, 23, 25, 27};
 int Amanuensis::WE = 32;
 int Amanuensis::OE = 52;
 int Amanuensis::CE = 29;
-unsigned int MAX_ADDRESS = 32767;
 
 void Amanuensis::start() {
 

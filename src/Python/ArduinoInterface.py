@@ -114,9 +114,10 @@ class ArduinoInterface:
         address = 0
         byte = file.read(1)
         while byte:
-            if byte != b'\xea':  # NO-OP (0xea) excluded
-                values_to_write.append(byte)
-                addresses_to_write.append(self.converter._int_to_hex(address))
+            # if byte != b'\xea':  # NO-OP (0xea) excluded
+            values_to_write.append(byte)
+            addresses_to_write.append(self.converter._int_to_hex(address))
+            
             byte = file.read(1)
             address += 1
         file.close()
