@@ -76,7 +76,7 @@ with open("program.bin", "wb") as file:
 This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`.
 
 > **Note**
-> Before writing an address, its value is read. If it already contains the desired value, the write operation is skiped. This is to avoid unnecessary write cycles, which are relatively slow (~10ms).
+> Before writing an address, its content is retrieved. If it coincides with the desired value, the write operation is skiped. This is to avoid unnecessary write cycles, which are relatively slow (~10ms).
 
 #### Writting a Single Value (`-v`):
 
