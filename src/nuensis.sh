@@ -8,7 +8,7 @@ function nuensis() {
   if [[ $WD == *" "* ]]; then
     echo There are spaces in your PATH! You call yourself programmer? Do some good to yourself and remove them!
   else
-    python3 $THIS_BASH_SCRIPT_DIR/main_amanuensis.py --wd $INVOCATION_DIR $args
+    python3 $THIS_BASH_SCRIPT_DIR/Python/main_amanuensis.py --wd $INVOCATION_DIR $args
   fi
     
 }
