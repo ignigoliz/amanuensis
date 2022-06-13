@@ -113,6 +113,7 @@ class ArduinoInterface:
 
         address = 0
         byte = file.read(1)
+
         while byte:
             values_to_write.append(byte)
             addresses_to_write.append(self.converter._int_to_hex(address))
