@@ -91,6 +91,7 @@ void execute(char mode) {
     
     unsigned int theAddress;
     unsigned char theValue;
+    unsigned char theData;
     
     Serial.readBytes(addressHalvesBuffer, 2);
     Serial.readBytes(dataBuffer, 1);
@@ -98,6 +99,10 @@ void execute(char mode) {
     combineAddresses(addressHalvesBuffer, &theAddress, 2);
     theValue = dataBuffer[0];
 
+    theData = amanuensis.readAddress(theAddress);
+      if (theData != theValue) {
+        amanuensis.writeAddress(theAddress, theValue);
+      }
     amanuensis.writeAddress(theAddress, theValue);
 
     Serial.write(0x06);  // sends ACK
