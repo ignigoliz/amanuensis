@@ -10,7 +10,7 @@ Simple **EEPROM programmer**. Powered by Arduino and controller over the Termina
 
 - Lets you read individual **addresses** and whole **blocks** of memory.
 - Allows you to burn a `.bin` file onto the EEPROM and to write **individual** values to specific addresses.
-- Lets you erase the whole memory by **overwrtting** it with a certain value.
+- Lets you erase the whole memory by **overwrting** it with a certain value.
 
 <p align="center">
  <img src="./assets/nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
@@ -76,7 +76,7 @@ with open("program.bin", "wb") as file:
 This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`.
 
 > **Note**
-> During file writting, values in the bytearray with **No-Operation** instruction (`0xea`) are ignored. In other words, `0xea` must be used as a placeholder.
+> Before writing an address, its value is read. If it already contains the desired value, the write operation is skiped. This is to avoid unnecessary write cycles, which are relatively slow (~10ms).
 
 #### Writting a Single Value (`-v`):
 
