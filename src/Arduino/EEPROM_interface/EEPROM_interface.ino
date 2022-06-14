@@ -73,7 +73,7 @@ void execute(char mode) {
     unsigned int theAddress;
     unsigned char theValue;
     
-    combineAddresses(addressHalvesBuffer, &theAddress, 2);
+    combineAddresses(addressHalvesBuffer, &theAddress, 1);
     
     theValue = amanuensis.readAddress(theAddress);
     Serial.write(&theValue, 1);
@@ -96,14 +96,13 @@ void execute(char mode) {
     Serial.readBytes(addressHalvesBuffer, 2);
     Serial.readBytes(dataBuffer, 1);
 
-    combineAddresses(addressHalvesBuffer, &theAddress, 2);
+    combineAddresses(addressHalvesBuffer, &theAddress, 1);
     theValue = dataBuffer[0];
 
     theData = amanuensis.readAddress(theAddress);
       if (theData != theValue) {
         amanuensis.writeAddress(theAddress, theValue);
       }
-    amanuensis.writeAddress(theAddress, theValue);
 
     Serial.write(0x06);  // sends ACK
     
@@ -119,13 +118,17 @@ void execute(char mode) {
     
     Serial.readBytes(addressHalvesBuffer, 4);
     Serial.write(0x06);  // sends ACK
+//    Serial.write(&addressHalvesBuffer[1], 1);
 
     unsigned int theAddressBeg;
     unsigned int theAddressEnd;
     unsigned char theData;
     
-    combineAddresses(addressHalvesBuffer, &theAddressBeg, 2);
-    combineAddresses(&addressHalvesBuffer[2], &theAddressEnd, 2);
+    combineAddresses(&addressHalvesBuffer[0], &theAddressBeg, 1);
+    combineAddresses(&addressHalvesBuffer[2], &theAddressEnd, 1);
+
+//    Serial.write(amanuensis.readAddress(theAddressBeg));
+//    Serial.write(&theAddressBeg, 2);
 
     for (unsigned int theAddress=theAddressBeg; theAddress<=theAddressEnd; theAddress+=16) {
       for (int i=0; i<16; i++) {

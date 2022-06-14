@@ -105,7 +105,7 @@ class ArduinoInterface:
         return value
 
 
-    def _read_bin_file(self, file):
+    def _read_bin_file_without_ea(self, file):
         file = open(file, 'rb')
 
         values_to_write = []
@@ -115,9 +115,9 @@ class ArduinoInterface:
         byte = file.read(1)
 
         while byte:
-            values_to_write.append(byte)
-            addresses_to_write.append(self.converter._int_to_hex(address))
-
+            if byte != b'\xea':  # NO-OP (0xea) excluded
+                values_to_write.append(byte)
+                addresses_to_write.append(self.converter._int_to_hex(address))
             byte = file.read(1)
             address += 1
         file.close()
@@ -199,13 +199,19 @@ class ArduinoInterface:
             packet = bytearray()
             packet += beg_block_memory_hex
             packet += end_block_memory_hex
+            print(packet)
             self.port.write(packet)
+
     
             self._wait_for_ACK()
+            # print(self.port.read(1))
+
+            # print(self.port.read(1))
 
             for block_idx in range(amount_of_blocks):
                 self._wait_until_data_in_buffer()
                 data = self.port.read(16)
+                # print(data)
                 self._send_ACK()
 
                 data_list_str = [f"{hex_value:02x}" for hex_value in data]
@@ -229,6 +235,11 @@ class ArduinoInterface:
         
 
     def write_routine(self, routine, *args):
+        """ In order not to have to run a handshake for every address and value in the file, which is slow,
+            only those values different from 0xea (No-Op) are actually transmitted individually. All the
+            0xea (which are assumed to occupy most of the space) are writen right before through an "overwrite"
+            operation.
+        """
         if routine == 'file':
             file_path = args[0]
             working_directory = args[1]
@@ -239,7 +250,22 @@ class ArduinoInterface:
                 print(f"No such file: {full_file_path}")
                 exit()
 
-            addresses_to_write, values_to_write = self._read_bin_file(file_path)
+            # Clean memory by writing 0xea everywhere
+            self._handshake(mode='A')
+            value_hex = self.converter._hex_str_to_hex("ea")
+            self._write(value_hex=value_hex)
+
+            while True:
+                if not self._serial_buffer_empty():
+                    msg = self.port.read(1)
+                    if msg == b'\xFF':  # 0xFF sent by Arduino to mark EOF
+                        break
+                    else:
+                        progress = self.converter._hex_to_int(msg)
+                        self._print_progress(progress//2)
+
+            # Write contents different from 0xea
+            addresses_to_write, values_to_write = self._read_bin_file_without_ea(file_path)
 
             total_iter = len(addresses_to_write)
             current_iter = 1
@@ -247,8 +273,9 @@ class ArduinoInterface:
             print(" ")
             
             for addr, val in zip(addresses_to_write, values_to_write):
+                print(val)
                 progress = int(current_iter/total_iter*100)
-                self._print_progress(progress)
+                self._print_progress(50 + progress//2)
                 self._handshake(mode='W')
                 self._write(addr, val)
                 current_iter+= 1
