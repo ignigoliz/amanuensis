@@ -23,7 +23,7 @@ All of this through a **Command Line Interface** and directly from your laptop.
 
 > **Warning**
 > Developped for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
-> Use for other parallel EEPROMs might be possible. Check section [Usage with other EEPROMs](#usage-with-other-eeproms).
+> Use for other parallel EEPROMs might be possible. Check section [Use with other EEPROMs](#use-with-other-eeproms).
 
 ---
 
@@ -210,7 +210,7 @@ The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` 
 
 ## Use With Other EEPROMs
 
-`Amanuensis` should work with other **parallel** EEPROMs as long as they respond to the same read/write pulse cycles as the **28c256** (e.g. 28c64):
+`Amanuensis` should work with other **parallel** EEPROMs as long as they respond to the same read/write pulse cycles as the **28c256** (for example the 28c64):
 
 <p align="center">
  <img src="./assets/nuensis_pulses.png" alt="Pulses for reading/writting operations" width=100%>
