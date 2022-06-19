@@ -16,7 +16,7 @@ Simple **EEPROM programmer**. Powered by Arduino and controller over the Termina
  <img src="./assets/nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
 </p>
 
-All of this with through a **Command Line Interface** directly from yout laptop.
+All of this through a **Command Line Interface** and directly from your laptop.
 
 > **Note**
 > Software tested on **macOS** Monterey. It might be compatible with Linux-based systems with minor/no changes.
