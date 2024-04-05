@@ -4,7 +4,7 @@
 
 ---
 
-Simple **EEPROM programmer**. Powered by Arduino and controller over the Terminal. Useful for those following [Ben Eater's 6502 pc course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
+Minimalistic **EEPROM programmer** powered by Arduino and controlled over the command line. Useful for those following [Ben Eater's 6502 pc course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
 
 ### What Amanuensis does...
 
