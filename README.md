@@ -6,11 +6,13 @@
 
 Minimalistic **EEPROM programmer** powered by Arduino and controlled over the command line. Useful for those following [Ben Eater's 6502 pc course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
 
-### What Amanuensis does...
+### What can Amanuensis be used for?
 
-- Lets you read individual **addresses** and whole **blocks** of memory.
-- Allows you to burn a `.bin` file onto the EEPROM and to write **individual** values to specific addresses.
-- Lets you erase the whole memory by **overwrting** it with a certain value.
+- Read the content of individual EEPROM addresses.
+- Read whole blocks of memory.
+- Write a `.bin` file into the EEPROM.
+- Write **individual values** to specific addresses.
+- Erase the whole memory.
 
 <p align="center">
  <img src="./assets/nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
