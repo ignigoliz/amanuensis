@@ -18,7 +18,7 @@ Minimalistic **EEPROM programmer** powered by Arduino and controlled over the co
  <img src="./assets/nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
 </p>
 
-All of this through a **Command Line Interface** and directly from your laptop.
+Amanuensis is interfaced through the **command line** and directly from your laptop. It needs an Arduino Mega and the correct wiring to connect the pins in the Arduino to pins in the EEPROM.
 
 > **Note**
 > Software tested on **macOS** Monterey. It might be compatible with Linux-based systems with minor/no changes.
@@ -43,9 +43,9 @@ All of this through a **Command Line Interface** and directly from your laptop.
 
 # How It Works
 
-Your laptop's Command Line Interface interacts with Arduino over the serial port. At the same time, the Arduino drives **read/write pulse cycles** onto the parallel EEPROM. It sends back the information to Arduino, which passes it back to your laptop's Command Line Interface.
+Your laptop connects to Arduino, which drives the EEPROM through the appropriate electric pulses. Depending on the read or write operation, Arduino then passes the information received from the EEPROM back to your laptop.
 
-These read/write pulse cycles can be found the [datasheet](https://eater.net/datasheets/28c256.pdf) of the **28c256 parallel EEPROM**.
+The pulse cycles needed to drive the EEPROM can be found in the official datasheet of the [28c256 parallel EEPROM](https://eater.net/datasheets/28c256.pdf).
 
 <p align="center">
  <img src="./assets/schema.png" alt="Communication schema" width=100%>
