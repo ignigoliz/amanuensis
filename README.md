@@ -2,28 +2,27 @@
  <img src="./assets/amanuensis_header.png" alt="Uploading file to EEPROM" width=90%>
 </p>
 
+### AMANUENSIS: Minimalistic EEPROM programmer for Ben Eater's 6502 8-bit PC.
+
 ---
 
-Minimalistic **EEPROM programmer** powered by Arduino and controlled over the command line. Useful for those following [Ben Eater's 6502 pc course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
+### What does it do?
 
-### What can Amanuensis be used for?
-
-- Read the content of individual EEPROM addresses.
-- Read whole blocks of memory.
+Amanuensis is a **command-line interface** to control EEPROMs like the 28c256 used in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU). It can:
+- Read individual addresses.
+- Read blocks of memory.
+- Write to specific addresses.
 - Write a `.bin` file into the EEPROM.
-- Write **individual values** to specific addresses.
-- Erase the whole memory.
+- Erase the memory.
 
 <p align="center">
  <img src="./assets/nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
 </p>
 
-Amanuensis is interfaced through the **command line** and directly from your laptop. It needs an Arduino Mega and the correct wiring to connect the pins in the Arduino to pins in the EEPROM.
+> **Note:**
+> Software tested on **macOS**. It might be compatible with Linux-based systems with minor or no changes.
 
-> **Note**
-> Software tested on **macOS** Monterey. It might be compatible with Linux-based systems with minor/no changes.
-
-> **Warning**
+> **Warning:**
 > Developped for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
 > Use for other parallel EEPROMs might be possible. Check section [Use with other EEPROMs](#use-with-other-eeproms).
 
@@ -31,27 +30,49 @@ Amanuensis is interfaced through the **command line** and directly from your lap
 
 ## Table of Contents
 
+- **[Installation](#installation)**
+- **[Use Guide](#use-guide)**
 - **[How It Works](#how-it-works)**
-  - **[Quick Use Guide](#quick-use-guide)**
 - **[Setup](#setup)**
   - **[Hardware Setup](#hardware-setup)**
-  - **[Software Installation](#software-installation)**
   - **[Recommended Writting Procedure](#recommended-writting-procedure)**
   - **[Use with other EEPROMs](#use-with-other-eeproms)**
 
 ---
 
-# How It Works
+# Installation
 
-Your laptop connects to Arduino, which drives the EEPROM through the appropriate electric pulses. Depending on the read or write operation, Arduino then passes the information received from the EEPROM back to your laptop.
+1. Clone this repo:
+   
+       git clone https://github.com/ignigoliz/amanuensis.git
 
-The pulse cycles needed to drive the EEPROM can be found in the official datasheet of the [28c256 parallel EEPROM](https://eater.net/datasheets/28c256.pdf).
+2. Install Python requirements:
+
+       pip install -r requirements.txt
+
+3. In a terminal, go to the cloned repo and execute the install file:
+   
+       ./install.sh
+
+> **Note:**
+> Restart the Terminal window after the installation to apply the changes
+
+4. Test the installation by opening a **new** terminal window and typing:
+      
+       nuensis -h
+
+> **Warning**
+> Moving the repo folder will break the paths of the binaries. To avoid this, follow the steps in **[Moving the `amanuensis` folder](#moving-the-amanuensis-folder)**.
+
+5. Add the Amanuensis Library to Arduino by copying the `AmanuensisLib` folder located in `src/Arduino/` to `~/Documents/Arduino`:
 
 <p align="center">
- <img src="./assets/schema.png" alt="Communication schema" width=100%>
+ <img src="./assets/arduino_install.gif" alt="Installing AmanuensisLib (Arduino library)" width=80%>
 </p>
 
-## Quick Use Guide
+6. Upload `EEPROM_interface.ino` located in `src/EEPROM_interface/` to your Arduino board.
+
+# Use Guide
 
 To see all available options:
 
@@ -115,10 +136,29 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).
 
+# How It Works
 
-# Setup
+Your laptop connects to Arduino, which drives the EEPROM through the appropriate electric pulses. Depending on the read or write operation, Arduino then passes the information received from the EEPROM back to your laptop.
 
-## Hardware Setup
+The pulse cycles needed to drive the EEPROM can be found in the official datasheet of the [28c256 parallel EEPROM](https://eater.net/datasheets/28c256.pdf).
+
+<p align="center">
+ <img src="./assets/schema.png" alt="Communication schema" width=100%>
+</p>
+
+
+# DIY Shield
+
+The shield conveniently maps certain Arduino Mega pins to the correct EEPROM pins. A custom PCB design is available to recreate the shield. Alternatively, the shield can be soldered on a regular protoboard.
+
+The hardware components needed are:
+
+- Custom PCB.
+- 28 pin ZIF socket.
+- 2x 220 ohm resistors
+- 1x red LED, 1x green LED.
+
+  
 
 <p align="center">
  <img src="./assets/overall_hardware.png" alt="Hardware components" width=75%>
@@ -163,32 +203,6 @@ The **Shield** performs the following pin mapping:
 
 A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp`.
 
-## Software Installation
-
-1. Clone or download this repo and place it in your **path** of preference (e.g. `./Documents/`).
-
-> **Warning**
-> Moving the repo folder will break the paths of the binaries. To avoid this, follow the steps in **[Moving the `amanuensis` folder](#moving-the-amanuensis-folder)**.
-
-#### Arduino setup
-
-2. Install Arduino **Amanuensis library** by placing the `./src/Arduino/AmanuensisLib/` folder in your system's `Arduino/libraries/` folder, usually found in `~/Documents/`.
-
-<p align="center">
- <img src="./assets/arduino_install.gif" alt="Installing AmanuensisLib (Arduino library)" width=80%>
-</p>
-
-3. Upload `EEPROM_interface.ino` to your Arduino board.
-
-#### Laptop setup
-
-4. Install Python requirements:
-
-       pip install -r requirements.txt
-
-5. Move to the amanuensis folder, wherever you placed it, (`cd [your-path]/amanuensis`) and run `./install.sh`.
-
-To test the installation, open a **new** terminal window and type `nuensis -h`.
 
 #### Moving the `amanuensis` folder
 
