@@ -157,14 +157,20 @@ The hardware components needed are:
 - 28 pin ZIF socket.
 - 2x 220 ohm resistors
 - 1x red LED, 1x green LED.
-
   
+<p align="center">
+ <img src="./assets/new_shield_components.jpg" alt="Hardware components" width=50%>
+</p>
+
+The PCB maps Arduino Mega pins to the ZIF socket where the EEPROM is connected. The Gerber files can be found at `pcb/`.
+
+
+
+The shield can be crafted on a protoboard as well:
 
 <p align="center">
  <img src="./assets/overall_hardware.png" alt="Hardware components" width=75%>
 </p>
-
-An **Arduino Mega** drives the **EEPROM 28c256** through a custom made **Shield**:
 
 <p align="center">
  <img src="./assets/shield.png" alt="Shield description" width=50%>
