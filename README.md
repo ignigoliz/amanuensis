@@ -164,7 +164,13 @@ The hardware components needed are:
 
 The PCB maps Arduino Mega pins to the ZIF socket where the EEPROM is connected. The Gerber files can be found at `pcb/`.
 
+<p align="center">
+ <img src="./assets/new_pcb.jpg" alt="Top and bottom view of the PCB of the shield" width=50%>
+</p>
 
+<p align="center">
+ <img src="./assets/gerber.png" alt="Screenshor of the gerber file" width=50%>
+</p>
 
 The shield can be crafted on a protoboard as well:
 
