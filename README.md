@@ -156,6 +156,7 @@ The hardware components needed are:
 - 28 pin ZIF socket.
 - 2x 220 ohm resistors
 - 1x red LED, 1x green LED.
+- 32x right angle pin headers.
   
 <p align="center">
  <img src="./assets/new_shield_components.jpg" alt="Hardware components" width=50%>
