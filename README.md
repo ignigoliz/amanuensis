@@ -33,10 +33,9 @@ Amanuensis is a **command-line interface** to control EEPROMs like the 28c256 us
 - **[Installation](#installation)**
 - **[Use Guide](#use-guide)**
 - **[How It Works](#how-it-works)**
-- **[Setup](#setup)**
-  - **[Hardware Setup](#hardware-setup)**
-  - **[Recommended Writting Procedure](#recommended-writting-procedure)**
-  - **[Use with other EEPROMs](#use-with-other-eeproms)**
+- **[DIY Shield](#diy-shield)**
+- **[Recommended Writting Procedure](#recommended-writting-procedure)**
+- **[Use with other EEPROMs](#use-with-other-eeproms)**
 
 ---
 
@@ -215,7 +214,6 @@ The **Shield** performs the following pin mapping:
 
 A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp`.
 
-
 #### Moving the `amanuensis` folder
 
 The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` folder, which was set when running `install.sh`. Therefore, if the folder is moved around, the CLI commands will fail. To solve it:
@@ -224,7 +222,7 @@ The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` 
 2. Open `./bash_profile` and delete the entry `source [your-path]/nuensis.sh`
 3. cd to the new folder location and re-run `./install.sh`.
 
-## Recommended Writting Procedure:
+# Recommended Writting Procedure:
 
 1. Erase all memory contents and set them to a known value, like **No-Operation** `0xea`:
 
@@ -236,7 +234,7 @@ The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` 
 
 3. Check that the contents are what you wanted them to be:
 
-## Use With Other EEPROMs
+# Use With Other EEPROMs
 
 `Amanuensis` should work with other **parallel** EEPROMs as long as they respond to the same read/write pulse cycles as the **28c256** (for example the 28c64):
 
