@@ -8,7 +8,7 @@
 
 ### What does it do?
 
-Amanuensis is a **Command Line Interface Tool** for easy interaction with EEPROMs like the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) that is used in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
+Amanuensis is a **CLI Tool** for easy interaction with EEPROMs. It was designed for the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf), used in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
 
 Uses:
 - Read blocks of memory.
@@ -21,7 +21,6 @@ Uses:
 </p>
 
 > **Note:**
->
 > Software tested on **macOS**. It might be compatible with Linux-based systems with minor or no changes.
 
 > **Warning:**
@@ -34,10 +33,10 @@ Uses:
 
 - **[Installation](#installation)**
 - **[How To Use It](#use-guide)**
-- **[How It Works](#how-it-works)**
+- **[Recommended Use](#recommended-writting-procedure)**
 - **[DIY Shield](#diy-shield)**
 - **[Pin Mapping](#diy-shield)**
-- **[Recommended Writting Procedure](#recommended-writting-procedure)**
+- **[Inner Working](#how-it-works)**
 - **[Use with other EEPROMs](#use-with-other-eeproms)**
 
 ---
@@ -130,6 +129,20 @@ with open("program.bin", "wb") as file:
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).
 
+
+# Recommended Use:
+
+1. Erase all memory contents and set them to a known value, like **No-Operation** `0xea`:
+
+       nuensis write --whole ea
+
+2. Create your own `program.bin` as described in **[Writting a File](<#writting-a-file-(f)>)**
+
+       nuensis write --file program.bin
+
+3. Check that the contents are what you wanted them to be:
+
+
 # DIY Shield
 
 The shield conveniently maps certain Arduino Mega pins to the correct EEPROM pins. A custom PCB design is available to recreate the shield. Alternatively, the shield can be soldered on a regular protoboard.
@@ -203,21 +216,18 @@ The Arduino Mega shield that I built implements such mapping. It is the followin
 | A13        |   25        |
 | A14        |   22        |
 
-| LED       | Arduino Pin |
+| LED        | Arduino Pin |
 | :--------: | :---------: |
 | GREEN LED  | 30          |
 | RED LED    | 31          |
 
-> **Note**
+> **Note:**
 > WE: Write Enable; OE: Output Enable; CE: Chip Enable; Dx: Data x; Ax: Address x
 
 
-> Green Led: Pin 30
-> Red Led: Pin 31
+# Inner Working
 
-# How It Works
-
-Your laptop connects to Arduino, which drives the EEPROM through the appropriate electric pulses. Depending on the read or write operation, Arduino then passes the information received from the EEPROM back to your laptop.
+The CLI Tool interacts with the Arduino over serial communication. The Arduino implements the low-level protocols to read and write to and from the EEPROM. To make the communication reliable, ACK (Acknowledgment) signals are sent back and forth.
 
 The pulse cycles needed to drive the EEPROM can be found in the official datasheet of the [28c256 parallel EEPROM](https://eater.net/datasheets/28c256.pdf).
 
@@ -225,31 +235,18 @@ The pulse cycles needed to drive the EEPROM can be found in the official datashe
  <img src="./assets/schema.png" alt="Communication schema" width=100%>
 </p>
 
-# Recommended Writting Procedure:
-
-1. Erase all memory contents and set them to a known value, like **No-Operation** `0xea`:
-
-       nuensis write --whole ea
-
-2. Create your own `program.bin` as described in **[Writting a File](<#writting-a-file-(f)>)**
-
-       nuensis write --file program.bin
-
-3. Check that the contents are what you wanted them to be:
-
 # Use With Other EEPROMs
 
-`Amanuensis` should work with other **parallel** EEPROMs as long as they respond to the same read/write pulse cycles as the **28c256** (for example the 28c64):
+`Amanuensis` was designed for the 28c256, a 256K EEPROM with 32K addresses. However, the code might be reused for other **parallel** EEPROMs as long as they respond to the same read/write pulse cycles as the **28c256** (for exampl, the 28c64 is one of them):
 
 <p align="center">
  <img src="./assets/nuensis_pulses.png" alt="Pulses for reading/writting operations" width=100%>
 </p>
 
-However, the code might have to be changed to fit your particular EEPROM needs. This is a quick checklist:
-
-- [ ] Confirm that the working voltage of your EEPROM is correctly set (in this case, Vcc of 5V is provided by Arduino).
-- [ ] Revisit the **pin mapping**, defined in `amanuensis/src/Amanuensis.cpp`.
-- [ ] Set `MAX_ADDRESS` of your EEPROM in `./src/ArduinoInterface.py` and in `./src/EEPROM_interface.ino` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
+A few of the things that might have to be checked:
+- Revisit the **pin mapping**.
+- Adjust `MAX_ADDRESS` of your EEPROM in `./src/python/ArduinoInterface.py` and in `./src/arduino/EEPROM_interface.ino` (e.g., for 15-bit addresses, `MAX_ADDRESS=32767`).
+- Make sure that the working voltage of the EEPROM is 5V or 3.3V (which is what Arduino provides).
 
 <p align="right">
   <img src="https://komarev.com/ghpvc/?username=amanuensis&color=orange&style=flat-square&label=VISITOR+COUNT" alt=”tomkaX” />
