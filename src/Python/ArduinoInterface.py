@@ -1,4 +1,4 @@
-from lib2to3.pytree import convert
+# from lib2to3.pytree import convert
 import os
 import serial  # pip3 install pyserial
 import sys
@@ -30,12 +30,9 @@ class ArduinoInterface:
             exit()
 
         self._wait_for_ACK()
-        # print("Connection succesful")
         
 
     def _handshake(self, mode):
-        # self._print_and_clear("Waiting for handshake response...")
-
         packet = bytearray()  # Sends communication details [R/W, n_bytes]
         packet += bytes(mode, encoding='ascii')
 
@@ -170,68 +167,58 @@ class ArduinoInterface:
 
     # -------------------------------------------------------------------------
 
-    def read_routine(self, routine, *args):
+    def read_range_routine(self, beg_addr_str, end_addr_str):
+        beg_int = self.converter._hex_str_to_int(beg_addr_str)
+        end_int = self.converter._hex_str_to_int(end_addr_str)
+        
+        beg_block_memory = beg_int - beg_int%16
+        end_block_memory = end_int - end_int%16 + 15
+        
+        amount_of_blocks = (end_block_memory+1 - beg_block_memory) // 16
+        
+        beg_block_memory_hex = self.converter._int_to_hex(beg_block_memory)
+        end_block_memory_hex = self.converter._int_to_hex(end_block_memory)            
+                
+        self._handshake(mode ='R')
 
+        packet = bytearray()
+        packet += beg_block_memory_hex
+        packet += end_block_memory_hex
+        # print(packet)
+        self.port.write(packet)
+
+        self._wait_for_ACK()
+
+        for block_idx in range(amount_of_blocks):
+            self._wait_until_data_in_buffer()
+            data = self.port.read(16)
+            # print(data)
+            self._send_ACK()
+
+            data_list_str = [f"{hex_value:02x}" for hex_value in data]
+
+            if block_idx == 0:
+                data_list_str[:beg_int%16] = ["--" for _ in range(beg_int%16)]
+            if block_idx == amount_of_blocks-1:
+                data_list_str[end_int%16+1:] = ["--" for _ in range(15 - end_int%16)]
+
+
+            current_block = beg_block_memory + 16*block_idx
+        
+            self._print_block(current_block, block_idx, data_list_str)
+
+
+    def read_routine(self, routine, *args):
         if routine == 'single':
-            self._handshake(mode='R')
-            addr_str = args[0]
-            addr_hex = self.converter._hex_str_to_hex(addr_str)
-            value = self._read(addr_hex)
-            print(self.converter._hex_to_hex_str(value, type="value"))
+            """
+            An single address read is considered a range read where the
+            range consists of a single address.
+            """
+            self.read_range_routine(args[0], args[0])
 
         elif routine == 'range':
-            beg_str = args[0]
-            end_str = args[1]
+            self.read_range_routine(args[0], args[1])
             
-            beg_int = self.converter._hex_str_to_int(beg_str)
-            end_int = self.converter._hex_str_to_int(end_str)
-            
-            beg_block_memory = beg_int - beg_int%16
-            end_block_memory = end_int - end_int%16 + 15
-            
-            amount_of_blocks = (end_block_memory+1 - beg_block_memory) // 16
-            
-            beg_block_memory_hex = self.converter._int_to_hex(beg_block_memory)
-            end_block_memory_hex = self.converter._int_to_hex(end_block_memory)            
-                    
-            self._handshake(mode ='N')
-
-            packet = bytearray()
-            packet += beg_block_memory_hex
-            packet += end_block_memory_hex
-            print(packet)
-            self.port.write(packet)
-
-    
-            self._wait_for_ACK()
-            # print(self.port.read(1))
-
-            # print(self.port.read(1))
-
-            for block_idx in range(amount_of_blocks):
-                self._wait_until_data_in_buffer()
-                data = self.port.read(16)
-                # print(data)
-                self._send_ACK()
-
-                data_list_str = [f"{hex_value:02x}" for hex_value in data]
-
-                if block_idx == 0:
-                    data_list_str[:beg_int%16] = ["--" for _ in range(beg_int%16)]
-                if block_idx == amount_of_blocks-1:
-                    data_list_str[end_int%16+1:] = ["--" for _ in range(15 - end_int%16)]
-
-
-                current_block = beg_block_memory + 16*block_idx
-            
-                self._print_block(current_block, block_idx, data_list_str)
-
-
-    def _combine_paths(self, file_path, working_directory):
-        working_directory = working_directory.replace('"', '')
-        if working_directory[-1] != '/':
-            working_directory += "/"
-        return urllib.parse.urljoin(working_directory, file_path)
         
 
     def write_routine(self, routine, *args):
@@ -241,10 +228,7 @@ class ArduinoInterface:
             operation.
         """
         if routine == 'file':
-            file_path = args[0]
-            working_directory = args[1]
-
-            full_file_path = self._combine_paths(file_path, working_directory)
+            full_file_path = args[0]
 
             if not os.path.isfile(full_file_path):
                 print(f"No such file: {full_file_path}")
@@ -265,7 +249,7 @@ class ArduinoInterface:
                         self._print_progress(progress//2)
 
             # Write contents different from 0xea
-            addresses_to_write, values_to_write = self._read_bin_file_without_ea(file_path)
+            addresses_to_write, values_to_write = self._read_bin_file_without_ea(full_file_path)
 
             total_iter = len(addresses_to_write)
             current_iter = 1
