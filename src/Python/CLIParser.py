@@ -8,8 +8,7 @@ class Parser:
 
 
     def create_parser(self):
-        parser = argparse.ArgumentParser(usage='nuensis [-h] {read/write} ...')
-        parser.add_argument('--wd', nargs='?', default=os.getcwd(), help='NO NEED TO USE. working directory from which this command is being executed')
+        parser = argparse.ArgumentParser(usage='nuensis [-h] [read | write] [-h]')
         subparser = parser.add_subparsers(dest='command')
         read = subparser.add_parser('read', help='read from EEPROM', usage = 'nuensis read [-h] [-w | -a ADDRESS | -r ADDRESS1 ADDRESS2]')
         write = subparser.add_parser('write', help='write to EEPROM', usage = 'nuensis write [-h] [-f FILE | -v ADDRESS VALUE | -w VALUE]')
@@ -37,5 +36,5 @@ class Parser:
 
 
     def msg(name=None):                                                            
-        return '''nuensis [-h] '''
+        return '''nuensis [-h]'''
     
