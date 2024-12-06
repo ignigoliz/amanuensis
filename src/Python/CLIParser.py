@@ -15,19 +15,19 @@ class Parser:
 
         read_group = read.add_mutually_exclusive_group()
 
-        read_group.add_argument('-w', '--whole', action='store_true', help='read whole EEPROM content')
+        read_group.add_argument('-w', '--whole', action='store_true', help='read all memory addresses.')
         read_group.add_argument('-a', '--address', type=str, nargs=1,
-                                help='read a specific 2-byte. Ex: ab12', metavar='ADDRESS')
+                                help='read a 2-byte memory address. Ex: nuensis read -a ab12', metavar='ADDRESS')
         read_group.add_argument('-r', '--range', type=str, nargs=2,
-                                help='read a range between two 2-byte addresses (endpoints included)', metavar=('ADDRESS1', 'ADDRESS2'))
+                                help='read contents between two 2-byte memory addresses. Ex: nuensis read -r 0001 000f', metavar=('ADDRESS1', 'ADDRESS2'))
 
         write_group = write.add_mutually_exclusive_group()
         write_group.add_argument('-f', '--file', type=str, nargs=1,
-                                help='write a file.bin, passed as a PATH or located in the current folder', metavar='FILE')
+                                help='write a hexdump file.bin to the memory. Ex: nuensis write -f ../myfile.bin', metavar='FILE')
         write_group.add_argument('-a', '--address', type=str, nargs=2,
-                                help='write the specified 2-byte address with a 1-byte value. Ex: 01ab ea', metavar=('ADDRESS', 'VALUE'))
+                                help='write a 1-byte value to a 2-byte address. Ex: nuensis write -a 01ab ea', metavar=('ADDRESS', 'VALUE'))
         write_group.add_argument('-w', '--whole', type=str, nargs=1,
-                                help='write the specified 1-byte value to the whole EEPROM addresses. Ex: ea', metavar=('VALUE'))
+                                help='write a 1-byte value to the all the memory addresses. Ex: nuensis write -w ea', metavar=('VALUE'))
         return parser
 
 
