@@ -2,18 +2,19 @@
  <img src="./assets/amanuensis_header.png" alt="Uploading file to EEPROM" width=90%>
 </p>
 
-### AMANUENSIS: Minimalistic EEPROM programmer for Ben Eater's 6502 8-bit PC.
+### Amanuensis: Minimalistic EEPROM programmer for Ben Eater's 6502 8-bit PC.
 
 ---
 
 ### What does it do?
 
-Amanuensis is a **command-line interface** to control EEPROMs like the 28c256 used in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU). It can:
-- Read individual addresses.
+Amanuensis is a **command-line tool** that allows easy interaction with EEPROM like the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) used in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
+
+In particular, it serves to:
 - Read blocks of memory.
-- Write to specific addresses.
-- Write a `.bin` file into the EEPROM.
-- Erase the memory.
+- Write to memory addresses.
+- Burn a program tothe memory (a `.bin` file).
+- Erase the whole memory.
 
 <p align="center">
  <img src="./assets/nuensis_file.gif" alt="Uploading file to EEPROM" width=90%>
@@ -24,16 +25,17 @@ Amanuensis is a **command-line interface** to control EEPROMs like the 28c256 us
 
 > **Warning:**
 > Developped for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
-> Use for other parallel EEPROMs might be possible. Check section [Use with other EEPROMs](#use-with-other-eeproms).
+> Use for other parallel EEPROMs might be possible but you will have to adapt the code. Check section [Use with other EEPROMs](#use-with-other-eeproms).
 
 ---
 
 ## Table of Contents
 
 - **[Installation](#installation)**
-- **[Use Guide](#use-guide)**
+- **[How To Use It](#use-guide)**
 - **[How It Works](#how-it-works)**
 - **[DIY Shield](#diy-shield)**
+- **[Pin Mapping](#diy-shield)**
 - **[Recommended Writting Procedure](#recommended-writting-procedure)**
 - **[Use with other EEPROMs](#use-with-other-eeproms)**
 
@@ -41,37 +43,33 @@ Amanuensis is a **command-line interface** to control EEPROMs like the 28c256 us
 
 # Installation
 
-1. Clone this repo:
+1. Clone the repo:
    
        git clone https://github.com/ignigoliz/amanuensis.git
 
-2. Install Python requirements:
+2. Create a virtual environment and install the `pyserial` library:
 
        pip install -r requirements.txt
 
-3. In a terminal, go to the cloned repo and execute the install file:
+3. Run the installation file to set the command-line tool.
    
        ./install.sh
 
 > **Note:**
 > Restart the Terminal window after the installation to apply the changes
 
-4. Test the installation by opening a **new** terminal window and typing:
+4. Test the installation by opening a *new* terminal window and typing:
       
        nuensis -h
 
 > **Warning**
-> Moving the repo folder will break the paths of the binaries. To avoid this, follow the steps in **[Moving the `amanuensis` folder](#moving-the-amanuensis-folder)**.
+> If you move the repo from the folder where it was installed, you'll need to rerun the `install.sh` script.
 
-5. Add the Amanuensis Library to Arduino by copying the `AmanuensisLib` folder located in `src/Arduino/` to `~/Documents/Arduino`:
+5. Upload `EEPROM_interface.ino` located in `src/arduino/` to your Arduino Mega board.
 
-<p align="center">
- <img src="./assets/arduino_install.gif" alt="Installing AmanuensisLib (Arduino library)" width=80%>
-</p>
+6. Wire the EEPROM to the Arduino as described in the [pin mapping section](#use-with-other-eeproms).
 
-6. Upload `EEPROM_interface.ino` located in `src/EEPROM_interface/` to your Arduino board.
-
-# Use Guide
+# How To Use It
 
 To see all available options:
 
@@ -80,14 +78,15 @@ To see all available options:
 
 #### Writting a File (`-f`):
 
-      nuensis write --file program.bin
+      nuensis write --file myfile.bin
 
-`program.bin` should hold its contents in a **bytearray**. Example of creation of such a file:
+For it to work, `myfile.bin` should be a hexdump like the following
 
 ```python
 #!/usr/bin/python3
 rom = bytearray([0xea]*32768)
 
+# `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`.
 rom[0x0000] = 0xaa
 rom[0x002b] = 0xbb
 
@@ -95,16 +94,11 @@ with open("program.bin", "wb") as file:
   file.write(rom)
 ```
 
-This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x002b`.
-
-> **Note**
-> Before writing an address, its content is retrieved. If it coincides with the desired value, the write operation is skiped. This is to avoid unnecessary write cycles, which are relatively slow (~10ms).
-
-#### Writting a Single Value (`-v`):
+#### Writting to a Single Address (`-a`):
 
     nuensis write --value 0123 ef  # Writes value 0xef to address 0x0123
 
-#### Overwritting Whole Memory (`-w`):
+#### Overwritting the Whole Memory (`-w`):
 
     nuensis write --whole ea  # Writes value 0xea in all addresses.
 
@@ -114,11 +108,11 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
  <img src="./assets/nuensis_overwrite.gif" alt="Overwritting whole memory" width=60%>
 </p>
 
-#### Reading Single Memory Address (`-a`):
+#### Reading a Single Memory Address (`-a`):
 
     nuensis read --address 0123  # Reads address 0x0123
 
-#### Reading Memory Range (`-r`):
+#### Reading a Memory Range (`-r`):
 
     nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
 
@@ -134,17 +128,6 @@ This results in data `0xaa` stored in address `0x0000` and `0xbb` stored in `0x0
 
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).
-
-# How It Works
-
-Your laptop connects to Arduino, which drives the EEPROM through the appropriate electric pulses. Depending on the read or write operation, Arduino then passes the information received from the EEPROM back to your laptop.
-
-The pulse cycles needed to drive the EEPROM can be found in the official datasheet of the [28c256 parallel EEPROM](https://eater.net/datasheets/28c256.pdf).
-
-<p align="center">
- <img src="./assets/schema.png" alt="Communication schema" width=100%>
-</p>
-
 
 # DIY Shield
 
@@ -182,46 +165,62 @@ The shield can be crafted on a protoboard as well:
  <img src="./assets/shield.png" alt="Shield description" width=50%>
 </p>
 
-The **Shield** performs the following pin mapping:
+# Pin Mapping
+The code provided expects certain Arduino Mega pins to be connected to certain EEPROM pins.
 
-|    EEPROM     | Pin | Arduino |
-| :-----------: | :-: | :-----: |
-| Write Enable  | WE  |   32    |
-| Output Enable | OE  |   52    |
-|  Chip Enable  | CE  |   29    |
-|    Data 0     | D0  |   49    |
-|    Data 1     | D1  |   41    |
-|    Data 2     | D2  |   39    |
-|    Data 3     | D3  |   35    |
-|    Data 4     | D4  |   33    |
-|    Data 5     | D5  |   23    |
-|    Data 6     | D6  |   25    |
-|    Data 7     | D7  |   27    |
-|   Address 0   | A0  |   47    |
-|   Address 1   | A1  |   45    |
-|   Address 2   | A2  |   51    |
-|   Address 3   | A3  |   50    |
-|   Address 4   | A4  |   44    |
-|   Address 5   | A5  |   46    |
-|   Address 6   | A6  |   48    |
-|   Address 7   | A7  |   40    |
-|   Address 8   | A8  |   24    |
-|   Address 9   | A9  |   26    |
-|  Address 10   | A10 |   53    |
-|  Address 11   | A11 |   28    |
-|  Address 12   | A12 |   38    |
-|  Address 13   | A13 |   32    |
-|  Address 14   | A14 |   36    |
+The Arduino Mega shield that I built implements such mapping. It is the following one:
 
-A different mapping might be defined in `./src/Arduino/Amanuensis/Amanuensis.cpp`.
+> **Note**
+> You can define your own mapping at `src/arduino/EEPROM_interface.ino`
 
-#### Moving the `amanuensis` folder
+| 28c256 Pin | Arduino Pin |
+| :--------: | :---------: |
+| WE         |   27        |
+| OE         |   22        |
+| CE         |   20        |
+| D0         |   48        |
+| D1         |   50        |
+| D2         |   52        |
+| D3         |   53        |
+| D4         |   51        |
+| D5         |   49        |
+| D6         |   47        |
+| D7         |   43        |
+| A0         |   46        |
+| A1         |   42        |
+| A2         |   40        |
+| A3         |   38        |
+| A4         |   36        |
+| A5         |   34        |
+| A6         |   28        |
+| A7         |   26        |
+| A8         |   27        |
+| A9         |   29        |
+| A10        |   39        |
+| A11        |   35        |
+| A12        |   24        |
+| A13        |   25        |
+| A14        |   22        |
 
-The Command Line Interface (CLI) relies on finding the PATH of the `amanuensis` folder, which was set when running `install.sh`. Therefore, if the folder is moved around, the CLI commands will fail. To solve it:
+> WE: Write Enable
+> OE: Output Enable
+> CE: Chip Enable
+> Dx: Data x
+> Ax: Address x
 
-1. Move the `amanuensis` folder to the new desired destination.
-2. Open `./bash_profile` and delete the entry `source [your-path]/nuensis.sh`
-3. cd to the new folder location and re-run `./install.sh`.
+> **Note**
+> Green Led: Pin 30
+> Red Led: Pin 31
+
+# How It Works
+
+Your laptop connects to Arduino, which drives the EEPROM through the appropriate electric pulses. Depending on the read or write operation, Arduino then passes the information received from the EEPROM back to your laptop.
+
+The pulse cycles needed to drive the EEPROM can be found in the official datasheet of the [28c256 parallel EEPROM](https://eater.net/datasheets/28c256.pdf).
+
+<p align="center">
+ <img src="./assets/schema.png" alt="Communication schema" width=100%>
+</p>
 
 # Recommended Writting Procedure:
 
