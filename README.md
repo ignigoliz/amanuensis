@@ -8,12 +8,12 @@
 
 ### What does it do?
 
-Amanuensis is a **command-line tool** that allows easy interaction with EEPROM like the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) used in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
+Amanuensis is a **Command Line Interface Tool** for easy interaction with EEPROMs like the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) that is used in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
 
-In particular, it serves to:
+Uses:
 - Read blocks of memory.
-- Write to memory addresses.
-- Burn a program tothe memory (a `.bin` file).
+- Write to certain addresses.
+- Burn a `.bin` file to the EEPROM.
 - Erase the whole memory.
 
 <p align="center">
@@ -21,10 +21,11 @@ In particular, it serves to:
 </p>
 
 > **Note:**
+>
 > Software tested on **macOS**. It might be compatible with Linux-based systems with minor or no changes.
 
 > **Warning:**
-> Developped for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
+> Code intended for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
 > Use for other parallel EEPROMs might be possible but you will have to adapt the code. Check section [Use with other EEPROMs](#use-with-other-eeproms).
 
 ---
@@ -202,13 +203,15 @@ The Arduino Mega shield that I built implements such mapping. It is the followin
 | A13        |   25        |
 | A14        |   22        |
 
-> WE: Write Enable
-> OE: Output Enable
-> CE: Chip Enable
-> Dx: Data x
-> Ax: Address x
+| LED       | Arduino Pin |
+| :--------: | :---------: |
+| GREEN LED  | 30          |
+| RED LED    | 31          |
 
 > **Note**
+> WE: Write Enable; OE: Output Enable; CE: Chip Enable; Dx: Data x; Ax: Address x
+
+
 > Green Led: Pin 30
 > Red Led: Pin 31
 
