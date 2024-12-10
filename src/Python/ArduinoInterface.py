@@ -20,7 +20,7 @@ class ArduinoInterface:
         
 
     def _attempt_connection(self):
-        self._print_and_clear("Connecting to Arduino...")
+        self._print_and_clear("Connecting to EEPROM...")
 
         dev = '/dev/' + os.popen("ls /dev/ | grep cu.usbmodem").read().rstrip()
         try:
@@ -257,7 +257,7 @@ class ArduinoInterface:
             print(" ")
             
             for addr, val in zip(addresses_to_write, values_to_write):
-                print(val)
+                # print(val)
                 progress = int(current_iter/total_iter*100)
                 self._print_progress(50 + progress//2)
                 self._handshake(mode='W')
