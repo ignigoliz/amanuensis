@@ -17,7 +17,7 @@ Uses:
 - Erase the whole memory.
 
 <p align="center">
- <img src="./assets/read_range_final.gif" alt="Uploading file to EEPROM" width=90%>
+ <img src="./assets/read_range_intro.gif" alt="Uploading file to EEPROM" width=100%>
 </p>
 
 > **Note:**
