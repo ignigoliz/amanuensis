@@ -8,7 +8,7 @@
 
 ### What does it do?
 
-Amanuensis is a **CLI Tool** for easy interaction with EEPROMs. It was designed for the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) 32K EEPROM, featured in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
+Amanuensis is a **CLI Tool** for easy interaction with EEPROMs. It was designed for the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) EEPROM, featured in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
 
 Uses:
 - Read blocks of memory.
@@ -34,7 +34,7 @@ Uses:
 - **[How To Use It](#use-guide)**
 - **[Recommended Use](#recommended-writting-procedure)**
 - **[DIY Shield](#diy-shield)**
-- **[Pin Mapping](#diy-shield)**
+- **[Pin Mapping](#pin-mapping)**
 - **[Inner Working](#how-it-works)**
 - **[Use with other EEPROMs](#use-with-other-eeproms)**
 
@@ -131,11 +131,10 @@ with open("program.bin", "wb") as file:
 
 # DIY Shield
 
-The shield conveniently maps certain Arduino Mega pins to the correct EEPROM pins. A custom PCB design is available to recreate the shield. Alternatively, the shield can be soldered on a regular protoboard.
+The shield conveniently maps Arduino Mega pins to the EEPROM pins as desribed in the section [Pin Mapping](#pin-mapping). I got mine fabricated but you can create yours in a protoboard.
 
-The hardware components needed are:
+The hardware I needed for my shield are:
 
-- Custom PCB.
 - 28 pin ZIF socket.
 - 2x 220 ohm resistors
 - 1x red LED, 1x green LED.
@@ -145,7 +144,7 @@ The hardware components needed are:
  <img src="./assets/new_shield_components.jpg" alt="Hardware components" width=50%>
 </p>
 
-The PCB maps Arduino Mega pins to the ZIF socket where the EEPROM is connected. The Gerber files can be found at `pcb/`.
+The custom PCB maps Arduino Mega pins to the ZIF socket where the EEPROM is connected. The Gerber files can be found at `pcb/`.
 
 <p align="center">
  <img src="./assets/new_pcb.jpg" alt="Top and bottom view of the PCB of the shield" width=50%>
@@ -158,11 +157,11 @@ The PCB maps Arduino Mega pins to the ZIF socket where the EEPROM is connected. 
 The shield can be crafted on a protoboard as well:
 
 <p align="center">
- <img src="./assets/overall_hardware.png" alt="Hardware components" width=75%>
+ <img src="./assets/overall_hardware.png" alt="Hardware components" width=90%>
 </p>
 
 <p align="center">
- <img src="./assets/shield.png" alt="Shield description" width=50%>
+ <img src="./assets/shield.png" alt="Shield description" width=80%>
 </p>
 
 # Pin Mapping
@@ -213,7 +212,7 @@ The Arduino Mega shield that I built implements such mapping. It is the followin
 
 # Inner Working
 
-The CLI Tool interacts with the Arduino over serial communication. The Arduino implements the low-level protocols to read and write to and from the EEPROM. To make the communication reliable, ACK (Acknowledgment) signals are sent back and forth.
+The CLI Tool interacts with the Arduino over serial communication. The Arduino implements the low-level operations that read and write the EEPROM. Python parses the commands and performs simple logic to handle the requests, and then delegates the read/write operations to Arduino. As means to maintain both parties responsive, ACK (ACKnowledgment) signals are sent to notify received data.
 
 The pulse cycles needed to drive the EEPROM can be found in the official datasheet of the [28c256 parallel EEPROM](https://eater.net/datasheets/28c256.pdf).
 
@@ -223,7 +222,7 @@ The pulse cycles needed to drive the EEPROM can be found in the official datashe
 
 # Use With Other EEPROMs
 
-`Amanuensis` was designed for the 28c256, a 256K EEPROM with 32K addresses. However, the code might be reused for other **parallel** EEPROMs as long as they respond to the same read/write pulse cycles as the **28c256** (for exampl, the 28c64 is one of them):
+Amanuensis was designed for the 28c256 EEPROM which has 32K addresses. However, the code might be reused for other **parallel** EEPROMs just by adapting the pin mapping. This should be possible as long as they respond to the same read/write pulse cycles as the **28c256** (for example, the 28c64 is one of them). If you feel like hacking even deeper, you can adapt the pulse sequences (to be found in `arduino/EEPROM_interface.ino`).
 
 <p align="center">
  <img src="./assets/nuensis_pulses.png" alt="Pulses for reading/writting operations" width=100%>
