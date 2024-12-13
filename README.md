@@ -151,17 +151,17 @@ The custom PCB maps Arduino Mega pins to the ZIF socket where the EEPROM is conn
 </p>
 
 <p align="center">
- <img src="./assets/gerber.png" alt="Screenshor of the gerber file" width=50%>
+ <img src="./assets/gerber.png" alt="Screenshot of the gerber file" width=50%>
 </p>
 
 The shield can be crafted on a protoboard as well:
 
 <p align="center">
- <img src="./assets/overall_hardware.png" alt="Hardware components" width=90%>
+ <img src="./assets/overall_hardware.png" alt="Hardware components" width=100%>
 </p>
 
 <p align="center">
- <img src="./assets/shield.png" alt="Shield description" width=80%>
+ <img src="./assets/shield.png" alt="Shield description" width=100%>
 </p>
 
 # Pin Mapping
