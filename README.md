@@ -16,7 +16,7 @@ Uses:
 - Write to individual addresses.
 
 <p align="center">
- <img src="./assets/read_range_intro.gif" alt="Reading range of memory" width=100%>
+ <img src="./assets/read_range_2.gif" alt="Reading range of memory" width=100%>
 </p>
 
 > **Note:**
@@ -31,10 +31,10 @@ Uses:
 ## Table of Contents
 
 - **[Installation](#installation)**
-- **[How To Use It](#use-guide)**
+- **[How To Use It](#how-to-use-it)**
 - **[DIY Shield](#diy-shield)**
 - **[Pin Mapping](#pin-mapping)**
-- **[Inner Working](#how-it-works)**
+- **[Inner Working](#inner-working)**
 - **[Use with other EEPROMs](#use-with-other-eeproms)**
 
 ---
@@ -76,13 +76,13 @@ To see all available options:
 
 #### Writting a File (`-f`):
 
-<p align="center">
- <img src="./assets/write_file.gif" alt="Writing a file to EEPROM" width=100%>
-</p>
-
       nuensis write --file myfile.bin
 
-For it to work, `myfile.bin` should be a hexdump like the following
+<p align="center">
+ <img src="./assets/file_write_2.gif" alt="Writing a file to EEPROM" width=100%>
+</p>
+
+For it to work, `program.bin` should be a hexdump like the following
 
 ```python
 #!/usr/bin/python3
@@ -96,22 +96,22 @@ with open("program.bin", "wb") as file:
   file.write(rom)
 ```
 
-#### Writting to a Single Address (`-a`):
+#### Writting to a Single Address (`--address | -a`):
 
     nuensis write --value 0123 ef  # Writes value 0xef to address 0x0123
 
-#### Overwritting the Whole Memory (`-w`):
+#### Overwritting the Whole Memory (`--whole | -w`):
 
     nuensis write --whole ea  # Writes value 0xea in all addresses.
 
 > **Warning**
 > This operation may take a while:
 
-#### Reading a Single Memory Address (`-a`):
+#### Reading a Single Memory Address (`--address | -a`):
 
     nuensis read --address 0123  # Reads address 0x0123
 
-#### Reading a Memory Range (`-r`):
+#### Reading a Memory Range (`--range | -r`):
 
     nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
 
@@ -120,7 +120,7 @@ with open("program.bin", "wb") as file:
 </p>
 
 
-#### Reading Whole Memory (`-w`):
+#### Reading Whole Memory (`--whole | -w`):
 
       nuensis read --whole  # Reads from 0x0000 to 0x7fff
 
