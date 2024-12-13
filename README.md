@@ -70,13 +70,15 @@ Uses:
 # How To Use It
 
 To see all available options:
-
-    nuensis read --help
-    nuensis write --help
+```bash
+nuensis read --help
+nuensis write --help
+```
 
 #### Writting a File (`-f`):
-
-    nuensis write --file myfile.bin
+```bash
+nuensis write --file myfile.bin
+```
 
 <p align="center">
  <img src="./assets/file_write_2.gif" alt="Writing a file to EEPROM" width=100%>
@@ -123,14 +125,14 @@ nuensis read --address 0123
 
 #### Reading a Memory Range (`--range | -r`):
 ```bash
-    # Reads from address 0x0000 to 0x004f
-    nuensis read --range 0000 004f
+# Reads from address 0x0000 to 0x004f
+nuensis read --range 0000 004f
 ```
 
 
 #### Reading Whole Memory (`--whole | -w`):
 ```bash
-     nuensis read --whole
+nuensis read --whole
 ```
 
 > **Note**
@@ -140,6 +142,10 @@ nuensis read --address 0123
 # DIY Shield
 
 The shield conveniently maps Arduino Mega pins to the EEPROM pins as desribed in the section [Pin Mapping](#pin-mapping). I got mine fabricated but you can create yours in a protoboard.
+
+<p align="center">
+ <img src="./assets/shield_mounted.jpeg" alt="Mounted shield" width=50%>
+</p>
 
 The hardware I needed for my shield are:
 
@@ -155,21 +161,21 @@ The hardware I needed for my shield are:
 The Gerber files can be found at `pcb/`.
 
 <p align="center">
- <img src="./assets/new_pcb.jpg" alt="Top and bottom view of the PCB of the shield" width=50%>
+ <img src="./assets/new_pcb.jpg" alt="Top and bottom view of the PCB of the shield" width=90%>
 </p>
 
 <p align="center">
- <img src="./assets/gerber.png" alt="Screenshot of the gerber file" width=50%>
+ <img src="./assets/gerber.png" alt="Screenshot of the gerber file" width=60%>
 </p>
 
 The shield can be crafted on a protoboard as well:
 
 <p align="center">
- <img src="./assets/overall_hardware.png" alt="Hardware components" width=90%>
+ <img src="./assets/overall_hardware.png" alt="Protoboard shield components" width=90%>
 </p>
 
 <p align="center">
- <img src="./assets/shield.png" alt="Shield description" width=90%>
+ <img src="./assets/shield.png" alt="Protoboard shield description" width=90%>
 </p>
 
 # Pin Mapping
