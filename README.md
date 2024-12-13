@@ -182,12 +182,12 @@ The shield can be crafted on a protoboard as well:
 </p>
 
 # Pin Mapping
-The code provided expects certain Arduino Mega pins to be connected to certain EEPROM pins.
-
-The Arduino Mega shield that I built implements such mapping. It is the following one:
+Certain Arduino Mega pins must be connected to certain EEPROM pins.
 
 > **Note**
 > You can define your own mapping at `src/arduino/EEPROM_interface.ino`
+
+ The DIY Shield implements the following mapping between Arduino Mega pins and EEPROM pins:
 
 | 28c256 Pin | Arduino Pin |
 | :--------: | :---------: |
@@ -234,7 +234,7 @@ The CLI Tool interacts with the Arduino over serial communication. The Arduino i
 The pulse cycles needed to drive the EEPROM can be found in the official datasheet of the [28c256 parallel EEPROM](https://eater.net/datasheets/28c256.pdf).
 
 <p align="center">
- <img src="./assets/schema.png" alt="Communication schema" width=100%>
+ <img src="./assets/schema_2.png" alt="Communication schema" width=100%>
 </p>
 
 # Use With Other EEPROMs
