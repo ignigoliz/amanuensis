@@ -8,13 +8,12 @@
 
 ### What does it do?
 
-Amanuensis is a **CLI Tool** for easy interaction with EEPROMs. It was designed for the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf), used in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
+Amanuensis is a **CLI Tool** for easy interaction with EEPROMs. It was designed for the [28c256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) 32K EEPROM, featured in [Ben Eater's 6502 8-bit PC course](https://www.youtube.com/watch?v=LnzuMJLZRdU).
 
 Uses:
 - Read blocks of memory.
-- Write to certain addresses.
-- Burn a `.bin` file to the EEPROM.
-- Erase the whole memory.
+- Burn a `.bin` file.
+- Write to individual addresses.
 
 <p align="center">
  <img src="./assets/read_range_intro.gif" alt="Uploading file to EEPROM" width=100%>
@@ -25,7 +24,7 @@ Uses:
 
 > **Warning:**
 > Code intended for **28c256 EEPROM** which has 32K addresses each storing 8-bit values.
-> Use for other parallel EEPROMs might be possible but you will have to adapt the code. Check section [Use with other EEPROMs](#use-with-other-eeproms).
+> Use for other parallel EEPROMs might be possible but you will have to adapt the code and the hardware. Check section [Use with other EEPROMs](#use-with-other-eeproms).
 
 ---
 
@@ -51,7 +50,7 @@ Uses:
 
        pip install -r requirements.txt
 
-3. Run the installation file to set the command-line tool.
+3. Run the installation file to add the `nuensis` command to your bash terminal.
    
        ./install.sh
 
@@ -63,11 +62,11 @@ Uses:
        nuensis -h
 
 > **Warning**
-> If you move the repo from the folder where it was installed, you'll need to rerun the `install.sh` script.
+> The `install.sh` uses the current path of the repo to execute the code. If you move the repo from the folder where it was installed, you'll need to run the `install.sh` script again.
 
 5. Upload `EEPROM_interface.ino` located in `src/arduino/` to your Arduino Mega board.
 
-6. Wire the EEPROM to the Arduino as described in the [pin mapping section](#use-with-other-eeproms).
+6. Wire the EEPROM to the Arduino Mega as described in the [pin mapping section](#use-with-other-eeproms).
 
 # How To Use It
 
@@ -77,6 +76,15 @@ To see all available options:
     nuensis write --help
 
 #### Writting a File (`-f`):
+
+<p align="center">
+ <img src="./assets/write_file.gif" alt="Writing a file to EEPROM" width=90%>
+</p>
+
+<p align="center">
+ <img src="./assets/read_range_file.gif" alt="Writing a file to EEPROM" width=90%>
+</p>
+
 
       nuensis write --file myfile.bin
 
