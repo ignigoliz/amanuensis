@@ -144,18 +144,19 @@ nuensis read --whole
 The shield conveniently maps Arduino Mega pins to the EEPROM pins as desribed in the section [Pin Mapping](#pin-mapping). I got mine fabricated but you can create yours in a protoboard.
 
 <p align="center">
- <img src="./assets/shield_mounted.jpeg" alt="Mounted shield" width=50%>
+ <img src="./assets/shield_mounted.jpeg" alt="Mounted shield" width=70%>
 </p>
 
 The hardware I needed for my shield are:
 
-- 28 pin ZIF socket.
+- Custom PCB
+- 28 pin ZIF socket
 - 2x 220 ohm resistors
-- 1x red LED, 1x green LED.
-- 32x right angle pin headers.
+- 1x red LED, 1x green LED
+- 32x right angle pin headers
   
 <p align="center">
- <img src="./assets/new_shield_components.jpg" alt="Hardware components" width=50%>
+ <img src="./assets/new_shield_components.jpg" alt="Hardware components" width=70%>
 </p>
 
 The Gerber files can be found at `pcb/`.
