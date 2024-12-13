@@ -141,7 +141,9 @@ nuensis read --whole
 
 # DIY Shield
 
-The shield conveniently maps Arduino Mega pins to the EEPROM pins as desribed in the section [Pin Mapping](#pin-mapping). I got mine fabricated but you can create yours in a protoboard.
+The shield conveniently maps Arduino Mega pins to the EEPROM pins as desribed in the section [Pin Mapping](#pin-mapping).
+
+I got mine fabricated but you can create yours in a protoboard.
 
 <p align="center">
  <img src="./assets/shield_mounted.jpeg" alt="Mounted shield" width=70%>
