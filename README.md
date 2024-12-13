@@ -16,7 +16,7 @@ Uses:
 - Write to individual addresses.
 
 <p align="center">
- <img src="./assets/read_range_2.gif" alt="Reading range of memory" width=100%>
+ <img src="./assets/read_range_3.gif" alt="Reading range of memory" width=100%>
 </p>
 
 > **Note:**
