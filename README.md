@@ -105,7 +105,7 @@ with open("program.bin", "wb") as file:
     nuensis write --whole ea  # Writes value 0xea in all addresses.
 
 <p align="center">
- <img src="./assets/write_whole.gif" alt="Reading range from file" width=100%>
+ <img src="./assets/write_whole_2.gif" alt="Reading range from file" width=100%>
 </p>
 
 > **Warning**
