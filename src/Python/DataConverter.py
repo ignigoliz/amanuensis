@@ -2,8 +2,8 @@
 class DataConverter:
   """ Addresses occupy 2 bytes (e.g. 0xABCD) and values 1 byte (e.g. 0xEF)
       hex_str: "ABCD"
-      hex: b'\xde\xad'
-      int: 17 (==0x11)
+      hex: b'\xab\xcd'
+      int: 43981 (==0xABCD)
   """
 
 
