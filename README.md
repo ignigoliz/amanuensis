@@ -16,7 +16,7 @@ Uses:
 - Write to individual addresses.
 
 <p align="center">
- <img src="./assets/read_range_intro.gif" alt="Uploading file to EEPROM" width=100%>
+ <img src="./assets/read_range_intro.gif" alt="Reading range of memory" width=100%>
 </p>
 
 > **Note:**
@@ -81,11 +81,6 @@ To see all available options:
  <img src="./assets/write_file.gif" alt="Writing a file to EEPROM" width=90%>
 </p>
 
-<p align="center">
- <img src="./assets/read_range_file.gif" alt="Writing a file to EEPROM" width=90%>
-</p>
-
-
       nuensis write --file myfile.bin
 
 For it to work, `myfile.bin` should be a hexdump like the following
@@ -125,7 +120,7 @@ with open("program.bin", "wb") as file:
     nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
 
 <p align="center">
- <img src="./assets/nuensis_read.gif" alt="Reading range example" width=90%>
+ <img src="./assets/read_range_file.gif" alt="Reading range from file" width=90%>
 </p>
 
 
