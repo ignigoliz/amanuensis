@@ -76,7 +76,7 @@ To see all available options:
 
 #### Writting a File (`-f`):
 
-      nuensis write --file myfile.bin
+    nuensis write --file myfile.bin
 
 <p align="center">
  <img src="./assets/file_write_2.gif" alt="Writing a file to EEPROM" width=100%>
@@ -98,11 +98,13 @@ with open("program.bin", "wb") as file:
 
 #### Writting to a Single Address (`--address | -a`):
 
-    nuensis write --value 0123 ef  # Writes value 0xef to address 0x0123
+    # Writes value 0xef to address 0x0123
+    nuensis write --value 0123 ef
 
 #### Overwritting the Whole Memory (`--whole | -w`):
 
-    nuensis write --whole ea  # Writes value 0xea in all addresses.
+    # Writes value 0xea in all addresses.
+    nuensis write --whole ea
 
 <p align="center">
  <img src="./assets/write_whole_2.gif" alt="Reading range from file" width=100%>
@@ -113,16 +115,20 @@ with open("program.bin", "wb") as file:
 
 #### Reading a Single Memory Address (`--address | -a`):
 
-    nuensis read --address 0123  # Reads address 0x0123
+    # Reads address 0x0123
+    nuensis read --address 0123
 
 #### Reading a Memory Range (`--range | -r`):
-
-    nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
+```bash
+    # Reads from address 0x0000 to 0x004f
+    nuensis read --range 0000 004f
+```
 
 
 #### Reading Whole Memory (`--whole | -w`):
 
-      nuensis read --whole  # Reads from 0x0000 to 0x7fff
+     # Reads from 0x0000 to 0x7fff
+     nuensis read --whole
 
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. This means that memory addresses range from 0 (`0x0000`) to 32767 (`0x7fff`).
