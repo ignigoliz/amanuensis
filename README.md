@@ -143,7 +143,7 @@ The hardware I needed for my shield are:
  <img src="./assets/new_shield_components.jpg" alt="Hardware components" width=50%>
 </p>
 
-The custom PCB maps Arduino Mega pins to the ZIF socket where the EEPROM is connected. The Gerber files can be found at `pcb/`.
+The Gerber files can be found at `pcb/`.
 
 <p align="center">
  <img src="./assets/new_pcb.jpg" alt="Top and bottom view of the PCB of the shield" width=50%>
