@@ -78,7 +78,7 @@ To see all available options:
 #### Writting a File (`-f`):
 
 <p align="center">
- <img src="./assets/write_file.gif" alt="Writing a file to EEPROM" width=90%>
+ <img src="./assets/write_file.gif" alt="Writing a file to EEPROM" width=100%>
 </p>
 
       nuensis write --file myfile.bin
@@ -107,9 +107,6 @@ with open("program.bin", "wb") as file:
 
 > **Warning**
 > This operation may take a while:
-<p align="center">
- <img src="./assets/nuensis_overwrite.gif" alt="Overwritting whole memory" width=60%>
-</p>
 
 #### Reading a Single Memory Address (`-a`):
 
@@ -120,7 +117,7 @@ with open("program.bin", "wb") as file:
     nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
 
 <p align="center">
- <img src="./assets/read_range_file.gif" alt="Reading range from file" width=90%>
+ <img src="./assets/read_range_file.gif" alt="Reading range from file" width=100%>
 </p>
 
 
@@ -128,22 +125,8 @@ with open("program.bin", "wb") as file:
 
       nuensis read --whole  # Reads from 0x0000 to 0x7fff
 
-
 > **Note**
-> EEPROM 28c256 has 15-bit memory registers. They range from 0 (`0x0000`) to 32767 (`0x7fff`).
-
-
-# Recommended Use:
-
-1. Erase all memory contents and set them to a known value, like **No-Operation** `0xea`:
-
-       nuensis write --whole ea
-
-2. Create your own `program.bin` as described in **[Writting a File](<#writting-a-file-(f)>)**
-
-       nuensis write --file program.bin
-
-3. Check that the contents are what you wanted them to be:
+> EEPROM 28c256 has 15-bit memory registers. This means that memory addresses range from 0 (`0x0000`) to 32767 (`0x7fff`).
 
 
 # DIY Shield
