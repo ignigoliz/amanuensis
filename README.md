@@ -97,14 +97,16 @@ with open("program.bin", "wb") as file:
 ```
 
 #### Writting to a Single Address (`--address | -a`):
-
-    # Writes value 0xef to address 0x0123
-    nuensis write --value 0123 ef
+```bash
+# Writes value 0xef to address 0x0123
+nuensis write --value 0123 ef
+```
 
 #### Overwritting the Whole Memory (`--whole | -w`):
-
-    # Writes value 0xea in all addresses.
-    nuensis write --whole ea
+```bash
+# Writes value 0xea in all addresses.
+nuensis write --whole ea
+```
 
 <p align="center">
  <img src="./assets/write_whole_2.gif" alt="Reading range from file" width=100%>
@@ -114,9 +116,10 @@ with open("program.bin", "wb") as file:
 > This operation may take a while:
 
 #### Reading a Single Memory Address (`--address | -a`):
-
-    # Reads address 0x0123
-    nuensis read --address 0123
+```bash
+# Reads address 0x0123
+nuensis read --address 0123
+```
 
 #### Reading a Memory Range (`--range | -r`):
 ```bash
@@ -126,9 +129,9 @@ with open("program.bin", "wb") as file:
 
 
 #### Reading Whole Memory (`--whole | -w`):
-
-     # Reads from 0x0000 to 0x7fff
+```bash
      nuensis read --whole
+```
 
 > **Note**
 > EEPROM 28c256 has 15-bit memory registers. This means that memory addresses range from 0 (`0x0000`) to 32767 (`0x7fff`).
