@@ -104,6 +104,10 @@ with open("program.bin", "wb") as file:
 
     nuensis write --whole ea  # Writes value 0xea in all addresses.
 
+<p align="center">
+ <img src="./assets/write_whole.gif" alt="Reading range from file" width=100%>
+</p>
+
 > **Warning**
 > This operation may take a while:
 
@@ -114,10 +118,6 @@ with open("program.bin", "wb") as file:
 #### Reading a Memory Range (`--range | -r`):
 
     nuensis read --range 0000 004f  # Reads from address 0x0000 to 0x004f
-
-<p align="center">
- <img src="./assets/read_range_file.gif" alt="Reading range from file" width=100%>
-</p>
 
 
 #### Reading Whole Memory (`--whole | -w`):
