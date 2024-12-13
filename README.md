@@ -32,7 +32,6 @@ Uses:
 
 - **[Installation](#installation)**
 - **[How To Use It](#use-guide)**
-- **[Recommended Use](#recommended-writting-procedure)**
 - **[DIY Shield](#diy-shield)**
 - **[Pin Mapping](#pin-mapping)**
 - **[Inner Working](#how-it-works)**
@@ -157,11 +156,11 @@ The custom PCB maps Arduino Mega pins to the ZIF socket where the EEPROM is conn
 The shield can be crafted on a protoboard as well:
 
 <p align="center">
- <img src="./assets/overall_hardware.png" alt="Hardware components" width=100%>
+ <img src="./assets/overall_hardware.png" alt="Hardware components" width=90%>
 </p>
 
 <p align="center">
- <img src="./assets/shield.png" alt="Shield description" width=100%>
+ <img src="./assets/shield.png" alt="Shield description" width=90%>
 </p>
 
 # Pin Mapping
