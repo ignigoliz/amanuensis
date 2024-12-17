@@ -188,9 +188,9 @@ The code below implements the communication with the CLI, written in Python, and
 
 Amanuensis amanuensis;
 
-unsigned char addressHalvesBuffer[32];  // 2 bytes
-unsigned int addressBuffer[16];         // 4 bytes
-unsigned char dataBuffer[16];           // 2 bytes
+unsigned char addressHalvesBuffer[32];  // 2 bytes per item
+unsigned int addressBuffer[16];         // 4 bytes per item
+unsigned char dataBuffer[16];           // 2 bytes per item
 size_t bytesReceived;
 char mode;
 int write_amount;
